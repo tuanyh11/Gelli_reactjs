@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities; 
+
+@layer components {
+  body {
+    @apply text-t-m font-semibold 
+  }
+  a {
+    @apply hover:text-c-m ease-linear transition
+  }
+}
+
+@media (min-width: 1400px) {
+.container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+    max-width: 1140px !important;
+  }
+}
+
+body {
+  text-transform: capitalize;
+  font-family: 'Montserrat', sans-serif;
+}
