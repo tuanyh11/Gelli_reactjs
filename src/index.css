@@ -9,7 +9,12 @@
   a {
     @apply hover:text-c-m ease-linear transition
   }
+  .default-transition {
+    @apply transition-all ease-ease duration-300
+   }
+
 }
+
 
 @media (min-width: 1400px) {
 .container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
@@ -20,4 +25,11 @@
 body {
   text-transform: capitalize;
   font-family: 'Montserrat', sans-serif;
+  box-sizing: border-box;
+}
+
+.limit {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

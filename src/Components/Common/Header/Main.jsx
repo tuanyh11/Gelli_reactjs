@@ -6,6 +6,10 @@ import Dropdown from '../../UI/Dropdown'
 const categories = [
     {
         id: Math.random().toString(36).substr(2, 9),
+        name: 'categories'
+    },
+    {
+        id: Math.random().toString(36).substr(2, 9),
         name: 'perfume'
     },
     {
@@ -26,60 +30,25 @@ const categories = [
     },
 ]
 
-// .Search {
-//   position: absolute;
-//   left: 0px;
-//   top: 0px;
-//   width: 1920px;
-//   height: 5065px;
-//   z-index: 414;
-// }
-// . {
-//   font-size: 13px;
-//   font-family: "FontAwesome";
-//   color: rgb(68, 68, 68);
-//   line-height: 2.692;
-//   position: absolute;
-//   left: 1151.044px;
-//   top: 82.002px;
-//   z-index: 413;
-// }
-// .Category__________Enter_your_keywords {
-//   font-size: 13px;
-//   font-family: "Montserrat";
-//   color: rgb(242, 130, 136);
-//   line-height: 2.692;
-//   text-align: left;
-//   position: absolute;
-//   left: 779.938px;
-//   top: 116.059px;
-//   z-index: 412;
-// }
-// .Txt {
-//   border-width: 1px;
-//   border-color: rgb(235, 235, 235);
-//   border-style: solid;
-//   border-radius: 10px;
-//   position: absolute;
-//   left: 764px;
-//   top: 77px;
-//   width: 417px;
-//   height: 43px;
-//   z-index: 411;
-// }
 
 
-const renderBody = (items) => {
-    return (
-        <ul className="opacity-0 pointer-events-none absolute">
-            {items.map(item => <li key={item.id}>{item.name}</li>)}
+const renderBody = (items, active, handleOnClick) => { 
+    return ( 
+        <ul className={`z-[999999] absolute default-transition  left-0 right-0 bg-white top-[110%] shadow-sm ${active ? 'opacity-100 top-[110%]' : 'opacity-0 pointer-events-none top-[120%]'}`}>
+            {items.map(item => <li onClick={() => handleOnClick(item)} className='hover:text-c-m default-transition px-4 cursor-pointer text-sm py-2 hover:' key={item.id}>{item.name}</li>)}
         </ul>
     )
 }
-  
+   
 const Main = () => {
 
-    const [defaultValue, setDefaultValue] = useState('Categories');
+    const [category, setCategory] = useState(categories[0].name);
+    const [toggleDropDown, setToggleDropDown] = useState(false)
+
+    const handleOnClick = (item) => {
+        setCategory(item.name)
+        setToggleDropDown(pre => !pre)
+    }
 
   return (
     <div className="py-9 border-b border-c-2">
@@ -87,11 +56,17 @@ const Main = () => {
             <div className="flex items-center justify-between">
                 <div className="flex items-center">
                     <h1 className="text-5xl font-medium text-c-m font-alex-brush">Gelli</h1>
-                    <p className="ml-3 text-c-2 text-[13px] uppercase font-medium">premium template</p>
+                    <p className="ml-3 text-c-2 text-[13px] uppercase font-medium hidden lg:block">premium template</p>
                 </div>
-                <form className="flex items-center relative leading-[2.692] !px-4 border border-b-1 rounded-xl w-[414px]">
-                    <div className="relative ">
-                        <Dropdown renderBody={() => renderBody(categories) } value={defaultValue} activeHead={true}/>
+                <form className="flex items-center relative leading-[2.692]  !px-4 border border-b-1 rounded-xl w-[414px]">
+                    <div className=" ">
+                        <Dropdown 
+                            renderBody={() => renderBody(categories, toggleDropDown, handleOnClick) } 
+                            value={category} 
+                            activeHead={true}
+                            onClick={() => setToggleDropDown(pre => !pre)}
+                            style={{text: 'w-[100px] limit'}}
+                        />
                     </div>
                     <div className="w-[2px] h-[13px] block bg-b-1 ml-2 "></div>
                     <div className="flex items-center flex-1">
@@ -100,11 +75,12 @@ const Main = () => {
                     </div>
                 </form>
                 <div className="flex items-center">
-                    <div className="cursor-pointer">
+                    <div className="cursor-pointer relative">
                         <FaShoppingBasket className="text-[33px] text-dark "/>
+                        <div className="absolute top-1 -right-2 text-white min-w-[18px] text-xs font-medium flex justify-center h-[18px] leading-[18px] text-center  bg-c-m rounded-[50%]">1</div>
                     </div>
-                    <div className="w-[2px] h-[40px] block mx-4 bg-b-1 ml-2"></div>
-                    <div className="text-13">
+                    <div className="w-[2px] h-[40px] mx-4 bg-b-1 ml-2 hidden lg:block"></div>
+                    <div className="text-13 hidden lg:block">
                         <p className="normal-case text-xs">5 Item(s)</p>
                         <span className="text-c-m text-base">$12500</span>
                     </div>

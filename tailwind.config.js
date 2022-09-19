@@ -27,7 +27,7 @@ module.exports = {
       },
       fontFamily: {
         'alex-brush': 'Alex Brush, cursive'
-      }
+      },
     },
   },
   plugins: [],

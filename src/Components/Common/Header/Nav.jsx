@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { FaFacebookF, FaGooglePlusG, FaLinkedinIn, FaTwitter } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 import { Container } from 'reactstrap'
@@ -72,16 +72,35 @@ const social = [
   },
 ]
 
-const Menu = () => {
+const renderBody = (items, active, handleOnClick) => { 
+  return ( 
+      <ul className={`z-[999999]  absolute default-transition  left-0 right-0 bg-white  shadow-sm ${active ? 'opacity-100 top-[110%]' : 'opacity-0 pointer-events-none top-[120%]'}`}>
+          {items.map(item => <li onClick={() => handleOnClick(item)} className='capitalize font-medium default-transition px-4 hover:text-c-m cursor-pointer text-sm py-2 ' key={item.id}>{item.name}</li>)}
+      </ul>
+  )
+}
+
+const Nav = () => {
+  
+  const [category, setCategory] = useState('Categories');
+  const [toggleDropDown, setToggleDropDown] = useState(false) 
+
+  const handleOnClick = (item) => {
+    setCategory(item.name)
+    setToggleDropDown(pre => !pre)
+}
+
   return (
-    <div className="border-b border-c-1 !py-5">
+    <div className="border-b border-c-1 ">
       <Container>
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between md:flex-col lg:flex-row leading-[78px]">
           {/* nav */}
-          <ul className="flex">
+          <ul className="flex relative">
             {pages.map( item => {
               if(item.items) {
-                return (<li className="uppercase px-[14px] text-13 font-bold " key={item.id}><Link to="/"><Dropdown value={item.name}/></Link></li>)
+                return (<li className="uppercase px-[14px] text-13 font-bold  " key={item.id}>
+                      <Dropdown value={item.name} renderBody={() => renderBody(item.items, toggleDropDown, handleOnClick)} onClick={() => setToggleDropDown(pre => !pre)}/>
+                  </li>)
               }
               return (
                 <li className="uppercase px-[14px] text-13 font-bold " key={item.id}><Link to={'/'}>{item.name}</Link></li>
@@ -90,9 +109,9 @@ const Menu = () => {
           </ul>
 
           {/* social  */}
-          <div className="flex items-center">
-            {social.map(item => <div key={item.id} className="px-[14px]"><a href={item.url}>{item.icon}</a></div>)}
-          </div>
+          <ul className="flex items-center md:!pt-4 lg:!pt-0">
+            {social.map(item => <li key={item.id} className="px-[14px]"><a href={item.url}>{item.icon}</a></li>)}
+          </ul>
         </div>
       </Container>
     </div>
@@ -100,4 +119,4 @@ const Menu = () => {
 }
 
 
-export default Menu
+export default Nav
