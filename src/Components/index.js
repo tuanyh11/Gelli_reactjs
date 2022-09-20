@@ -7,3 +7,4 @@ export {default as MainLayout} from './Layout/MainLayout'
 
 // Ui 
 export {default as Banner} from './UI/Banner'
+export {default as DiamondButton} from './UI/Button/DiamondButton'

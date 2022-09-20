@@ -1,6 +1,6 @@
 import React from 'react'
 import Slider from 'react-slick'
-import { Banner } from '../Components'
+import { Banner, DiamondButton } from '../Components'
 import { banners } from '../Fakedata/uiData' 
 
 const Home = () => {
@@ -13,12 +13,10 @@ const Home = () => {
     arrows: false,
     appendDots: dots => <ul >{dots}</ul>,
     dotsClass:"container-dots",
-    customPaging() {
+    customPaging(i) {
       return (
-        <div class="border-boder-white !w-4 !h-4 !p-[2px] ">
-            <button class="button">
-                <div class="child"></div>
-            </button>
+        <div>
+          <DiamondButton containerButton='p-[2px] border-transparent hover:!border-white group' button='!bg-gray-bold '/>
         </div>
       )
     }

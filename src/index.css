@@ -39,8 +39,7 @@ body {
 }
 
 
-.border-boder-white,
-.border-normal {
+.container-button{
   border: 1px transparent solid;
   width: 30px;
   height: 30px;
@@ -55,7 +54,7 @@ body {
 }
 
 
-.button > .child {
+.button > .content {
   transform: rotate(-45deg);
 }
 
@@ -63,20 +62,14 @@ body {
 .button {
   width: 100%;
   height: 100%;
-  background: #d7d7d7;
   position: relative;
   transition: all;
   transition: all ease 300ms;
   border: none;
   cursor: pointer;
-  border: #f49297 1px solid;
 }
 
-.border-boder-white .button,
-.border-normal .button {
-  border: none;
-  height: 100;
-}
+
 
 .border-boder-white:hover {
   border-color: white;
@@ -101,11 +94,11 @@ body {
   margin-right: 10px;
 }
 
-.container-dots .slick-active .border-boder-white {
+.container-dots .slick-active .container-button {
   border-color: white;
 }
 
-.container-dots .slick-active .border-boder-white .button {
+.container-dots .slick-active .container-button .button {
   transform: scale(1.2);
-  background: white;
+  background: white !important;
 }
