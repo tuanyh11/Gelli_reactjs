@@ -10,14 +10,25 @@ const Home = () => {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    arrows: false
+    arrows: false,
+    appendDots: dots => <ul >{dots}</ul>,
+    dotsClass:"container-dots",
+    customPaging() {
+      return (
+        <div class="border-boder-white !w-4 !h-4 !p-[2px] ">
+            <button class="button">
+                <div class="child"></div>
+            </button>
+        </div>
+      )
+    }
   };
   return (
     <div>
       <section>
-      <Slider {...settings} >
+      <Slider {...settings}  >
         {banners.map((item, i) => (
-          <Banner key={i} image={item.image} title={item.title} subtitle={item.subtitle}/>
+          <Banner key={i} image={item.image} title={item.title} subtitle={item.subtitle} />
         )) }
       </Slider>
       </section>
