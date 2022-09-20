@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { FaFacebookF, FaGooglePlusG, FaLinkedinIn, FaTwitter } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 import { Container } from 'reactstrap'
@@ -72,10 +72,10 @@ const social = [
   },
 ]
 
-const renderBody = (items, active, handleOnClick) => { 
+const renderBody = (items,  handleOnClick) => { 
   return ( 
-      <ul className={`z-[999999]  absolute default-transition  left-0 right-0 bg-white  shadow-sm ${active ? 'opacity-100 top-[110%]' : 'opacity-0 pointer-events-none top-[120%]'}`}>
-          {items.map(item => <li onClick={() => handleOnClick(item)} className='capitalize font-medium default-transition px-4 hover:text-c-m cursor-pointer text-sm py-2 ' key={item.id}>{item.name}</li>)}
+      <ul>
+          {items.map(item => <li onClick={() => handleOnClick(item)} className='capitalize font-medium default-transition px-4 hover:!text-primary cursor-pointer text-sm py-2 ' key={item.id}>{item.name}</li>)}
       </ul>
   )
 }
@@ -83,12 +83,14 @@ const renderBody = (items, active, handleOnClick) => {
 const Nav = () => {
   
   const [category, setCategory] = useState('Categories');
-  const [toggleDropDown, setToggleDropDown] = useState(false) 
+
+  const modelRef = useRef()
 
   const handleOnClick = (item) => {
     setCategory(item.name)
-    setToggleDropDown(pre => !pre)
-}
+    modelRef.current.turnOffEvent()
+  }
+
 
   return (
     <div className="border-b border-c-1 ">
@@ -99,7 +101,7 @@ const Nav = () => {
             {pages.map( item => {
               if(item.items) {
                 return (<li className="uppercase px-[14px] text-13 font-bold  " key={item.id}>
-                      <Dropdown value={item.name} renderBody={() => renderBody(item.items, toggleDropDown, handleOnClick)} onClick={() => setToggleDropDown(pre => !pre)}/>
+                      <Dropdown value={item.name} ref={modelRef} renderBody={() => renderBody(item.items, handleOnClick)} />
                   </li>)
               }
               return (

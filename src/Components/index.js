@@ -6,4 +6,4 @@ export {default as Footer} from './Common/Footer'
 export {default as MainLayout} from './Layout/MainLayout'
 
 // Ui 
-
+export {default as Banner} from './UI/Banner'

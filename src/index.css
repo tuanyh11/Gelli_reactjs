@@ -4,14 +4,17 @@
 
 @layer components {
   body {
-    @apply text-t-m font-semibold 
+    @apply text-gray-darkest font-semibold 
   }
   a {
-    @apply hover:text-c-m ease-linear transition
+    @apply hover:!text-primary ease-linear transition
   }
   .default-transition {
     @apply transition-all ease-ease duration-300
-   }
+  }
+  .dropdownCustom .active {
+    @apply !opacity-100 top-[110%] !pointer-events-auto
+  }
 
 }
 
@@ -21,6 +24,7 @@
     max-width: 1140px !important;
   }
 }
+
 
 body {
   text-transform: capitalize;

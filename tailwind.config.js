@@ -7,13 +7,16 @@ module.exports = {
     extend: {
       colors: {
         'c-light': '#ffffff',
-        'c-m': '#f28288',
-        'c-1': '#777777',
+        'primary': '#f28288',
         'c-2': '#999999',
         'c-3': '#cdcdcd',
-        't-m': '#444444',
         'b-1': '#ebebeb',
-        'dark': '#000000'
+        'dark': '#000000',
+        gray: {
+          'dark': '#777777',
+          'light': '#F4F4F4',
+          'darkest': '#444444'
+        }
       },
       transitionTimingFunction: {
         'ease': 'cubic-bezier(.17,.67,.83,.67)'

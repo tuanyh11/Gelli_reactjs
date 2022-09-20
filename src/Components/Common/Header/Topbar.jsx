@@ -9,7 +9,7 @@ const language = ['english', 'germary']
 
 const Topbar = () => {
   return (
-    <div className='h-[40px] bg-[#f4f4f4] text-c-1 font-semibold text-xs'>
+    <div className='h-[40px] bg-[#f4f4f4] text-gray-dark font-semibold text-xs'>
       <Container className="h-full">
         <div className=" flex items-center justify-center lg:justify-between h-full">
           <div className="lg:flex items-center hidden">
