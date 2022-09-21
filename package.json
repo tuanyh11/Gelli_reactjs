@@ -21,6 +21,7 @@
     "reactstrap": "^9.1.4",
     "redux-saga": "^1.2.1",
     "slick-carousel": "^1.8.1",
+    "swiper": "^8.4.2",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

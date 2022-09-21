@@ -1,3 +1,7 @@
+import homeBanner_1 from './images/home-banner-1.png'
+import homeBanner_2 from './images/home-banner-2.png'
+import home_title_image_1 from './images/home-title-img-1.png'
+
 export const banners = [
     {
         image: 'https://media.istockphoto.com/photos/perfume-bottle-flat-lay-with-fragrance-ingredients-top-view-picture-id1324726060?b=1&k=20&m=1324726060&s=170667a&w=0&h=fYKuzxqeR_l9c54hetfsvBC8oL0_NWKHZO7JrtemOG4=',
@@ -16,3 +20,23 @@ export const banners = [
     },
     
 ];
+
+export const cateBanners = [
+    {
+        image: homeBanner_1,
+        title: 'perfume <br> for <strong>man</strong>',
+        description: 'over 268 products'
+    },
+    {
+        image: homeBanner_2,
+        title: 'perfume <br> for <strong>women</strong>',
+        description: 'over 268 products'
+    },
+    {
+        image: homeBanner_2,
+        title: 'perfume <br> <strong>colection</strong>',
+        description: 'over 268 products'
+    },
+    
+]
+

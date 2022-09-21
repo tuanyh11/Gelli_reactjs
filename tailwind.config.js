@@ -8,9 +8,10 @@ module.exports = {
       colors: {
         'c-light': '#ffffff',
         'primary': '#f28288',
+        'c-1': '#ebebeb',
         'c-2': '#999999',
         'c-3': '#cdcdcd',
-        'b-1': '#ebebeb',
+        'c-4': '#a4a4a4',
         'dark': '#000000',
         gray: {
           'dark': '#777777',
@@ -30,7 +31,8 @@ module.exports = {
         'c-2': '#e1e1e1'
       },
       fontFamily: {
-        'alex-brush': 'Alex Brush, cursive'
+        'alex-brush': 'Alex Brush, cursive',
+        'greatVibes': 'Great Vibes, cursive'
       },
     },
   },

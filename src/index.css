@@ -16,13 +16,22 @@
     @apply !opacity-100 top-[110%] !pointer-events-auto
   }
 
+  strong {
+    @apply font-bold
+  }
 }
+
+
 
 
 @media (min-width: 1400px) {
 .container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
     max-width: 1140px !important;
   }
+}
+
+.g-15, .gx-15 {
+  --bs-gutter-x: 1.875rem;
 }
 
 
@@ -50,7 +59,7 @@ body {
   cursor: pointer;
   display: flex;
   align-items: center;
-  justify-content: center;;
+  justify-content: center;
 }
 
 
