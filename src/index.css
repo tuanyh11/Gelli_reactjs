@@ -76,6 +76,9 @@ body {
   transition: all ease 300ms;
   border: none;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 
@@ -90,6 +93,8 @@ body {
   transform: scale(1.2);
   background: white;
 }
+
+
 
 .container-dots {
   display: flex;

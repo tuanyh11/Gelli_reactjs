@@ -5,7 +5,8 @@ import { Banner, DefaultCard, DiamondButton, SecondaryBanner, Title } from '../C
 import { banners, cateBanners } from '../Fakedata/uiData' 
 import home_title_image_1 from '../Fakedata/images/home-title-img-1.png'
 import { products } from '../Fakedata/products'
-import {Swiper, SwiperSlide} from 'swiper/react'
+import Arrow from './../Components/UI/Arrow/index';
+import { FaAngleLeft, FaAngleRight } from 'react-icons/fa'
 
 const arrival = {
   tile: 'new arrival',
@@ -22,6 +23,7 @@ const Home = () => {
     arrows: false,
     appendDots: dots => <ul >{dots}</ul>,
     dotsClass:"container-dots",
+
     customPaging(i) {
       return (
         <div>
@@ -37,7 +39,8 @@ const Home = () => {
     speed: 500,
     slidesToShow: 4,
     slidesToScroll: 1,
-    arrows: false
+    nextArrow: <Arrow classContainer="absolute !translate-y-[-200%] bg-transparent absolute top-1/2 left-[-30px] cursor-pointer"><FaAngleLeft className=' w-6 h-6'/></Arrow>,
+    prevArrow: <Arrow classContainer="absolute !translate-y-[-200%] bg-transparent absolute top-1/2 right-[-30px] cursor-pointer"><FaAngleRight className="w-6 h-6" /></Arrow>,
   }
     
 
@@ -66,14 +69,11 @@ const Home = () => {
               <Title text={arrival.tile} image={arrival.image} />
             </div>
             <div>
-              <Swiper 
-                slidesPerView={3}
-              >
-                {products.map((product, i) => 
-                <SwiperSlide key={i}>
-                  <DefaultCard data={product}/>
-                </SwiperSlide>)}
-              </Swiper>
+            <Slider {...productsArrival} adaptiveHeight="true" >
+              {products.map((product, i) => (
+                <DefaultCard key={i} data={product} />
+              )) }
+            </Slider>
                   
             </div>
           </Container>
