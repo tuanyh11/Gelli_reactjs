@@ -19,6 +19,23 @@
   strong {
     @apply font-bold
   }
+
+  .table-body-item td {
+    @apply border-t-[1px] border-t-c-2 border-solid border-b-[1px] border-b-c-2
+  }
+  
+  .table-body-item td:first-child {
+    @apply border-t-[1px] border-t-c-2 border-solid border-b-[1px] border-b-c-2  border-l-[1px] border-l-c-2 
+  }
+  
+  .table-body-item td:last-child {
+    @apply border-t-[1px] border-t-c-2 border-solid border-b-[1px] border-b-c-2  border-r-[1px] border-r-c-2 
+  }
+
+  a:hover {
+    @apply text-primary
+  }
+
 }
 
 
@@ -39,6 +56,7 @@ body {
   text-transform: capitalize;
   font-family: 'Montserrat', sans-serif;
   box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 .limit {
@@ -50,8 +68,6 @@ body {
 
 .container-button{
   border: 1px transparent solid;
-  width: 30px;
-  height: 30px;
   transform: rotate(45deg);
   transition: all ease 300ms;
   padding: 10px;
@@ -74,7 +90,6 @@ body {
   position: relative;
   transition: all;
   transition: all ease 300ms;
-  border: none;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -84,7 +99,7 @@ body {
 
 
 .border-boder-white:hover {
-  border-color: white;
+  border-color: rgb(79, 79, 79);
 }
 
 
@@ -104,6 +119,10 @@ body {
   transform: translate(-50%, -40px);
 }
 
+.container-dots.container-dots-testimonial {
+  transform: translate(60%, -40px);
+}
+
 .container-dots li {
   margin-right: 10px;
 }
@@ -115,4 +134,87 @@ body {
 .container-dots .slick-active .container-button .button {
   transform: scale(1.2);
   background: white !important;
+}
+
+.container-dots .slick-active .container-button-second {
+  border-color: #f28288;
+}
+
+.container-dots .slick-active .container-button-second .button {
+  transform: scale(1.2);
+  background: #f28288 !important; 
+}
+/* table */
+
+/* .tableCart tr {
+  border: none;
+} */
+
+.tableCart td:first-child,
+.tableCart th:first-child {
+  border-radius: 6px 0 0 6px;
+}
+
+.tableCart td:last-child,
+.tableCart th:last-child {
+  border-radius: 0 6px 6px 0;
+}
+
+
+/* Home page css */
+
+/* footer */
+
+.footer_logo-text p{
+  font-weight: 500;
+  font-size: 110px;
+  color: rgb(0, 0, 0);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 0.4;
+}
+
+.footer_logo-text span {
+  font-family:  'Montserrat', sans-serif;
+  font-size: 13px;
+  text-transform: uppercase;
+  display: flex;
+  position: absolute;
+  bottom: -15%;
+  left: 20%;
+  color: #bebebe;
+}
+
+.filter-range[type="range"]::-webkit-slider-runnable-track {
+  /* appearance: none; */
+  height: 5px;
+}
+
+.filter-range[type="range"]::-moz-range-track {
+  /* appearance: none; */
+  height: 5px;
+}
+
+.filter-range[type="range"]::-ms-track {
+  /* appearance: none; */
+  height: 5px;
+}
+
+.filter-range[type="range"]::-webkit-slider-thumb {
+  appearance: none;
+  height: 1.7rem;
+  width: 1.7rem;
+  background: red;
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+#left.filter-range[type="range"]::-webkit-slider-thumb {
+  appearance: none;
+  height: 2rem;
+  width: 2rem;
+  background: #000;
+  cursor: pointer;
+  pointer-events: auto;
 }

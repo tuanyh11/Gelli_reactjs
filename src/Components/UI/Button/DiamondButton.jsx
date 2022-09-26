@@ -9,9 +9,9 @@ const DiamondButton = ({
   children,
 }) => {
   return (
-    <div className={`container-button !w-4 !h-4 !p-[2px] hover:border-primary group ${containerButton}`} >
-      <button className={`button group-hover:!bg-white ${button}`}>
-          <div className={`content ${content}`}>{children}</div>
+    <div className={`container-button !p-[2px] hover:border-primary group rounded-sm ${containerButton}`} >
+      <button className={`button rounded-sm ${button}`}>
+          {children && <div className={`content ${content}`}>{children}</div>}
       </button>
     </div>
   )
