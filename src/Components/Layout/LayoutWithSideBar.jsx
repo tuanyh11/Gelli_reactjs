@@ -1,14 +1,10 @@
-import Slider,{Range} from 'rc-slider'
 import React from 'react'
-import { useEffect } from 'react'
-import { useRef } from 'react'
 import { useState } from 'react'
 import { Col, Container, Row } from 'reactstrap'
 import Footer from '../Common/Footer'
 import Header from '../Common/Header'
 import PolicyAndBrand from '../Common/PolicyAndBrand'
-import "rc-slider/assets/index.css";
-// import Slider from '@mui/material/Slider';
+import Slider from '@mui/material/Slider';
 
 const sidebarShopLabel = {
   label_sidebar_category: 'shop by categories',
@@ -48,12 +44,30 @@ const manufacturers = [
   },
 ]
 
+const productTags = [
+  {
+    name: 'Collections'
+  },
+  {
+    name: 'jewelry'
+  },
+  {
+    name: 'premium'
+  },
+  {
+    name: 'rings'
+  },
+  {
+    name: 'perfume'
+  }
+]
+
 const LayoutWithSideBar = ({children}) => {
-  const [filterPrice, setFilterPrice] = useState({min: 0, max: 30})
+  const [filterPrice, setFilterPrice] = useState([0, 30])
 
 
-  const handleFilterByPrice = (values) => {
-    setFilterPrice({min: values[0], max: values[1]})
+  const handleFilterByPrice = (e, values, activeThumb) => {
+    setFilterPrice(values)
   }
 
 
@@ -96,26 +110,78 @@ const LayoutWithSideBar = ({children}) => {
                             </ul>
                           </div>
 
-                          <div className="">
+                          <div className="pb-[70px]">
                             <div><h1 className="text-start font-greatVibes text-2xl font-medium">{sidebarShopLabel.label_sidebar_manufacturers}</h1></div>
-                            <div className="relative flex h-4 p-4">
-                              <Slider 
-                                 range
-                                 min={0}
-                                 max={100}
-                                 step={0.01}
-                                 value={[filterPrice.min, filterPrice.max]}
-                                 allowCross={false}
-                                 railStyle={{ background: "#e6e6e6", height: "5px" }}
-                                 trackStyle={{ background: "#1BAFBF", height: "5px" }}
-                                 onChange={handleFilterByPrice}
-                              />
-                              {/* <Range /> */}
+                            <div className="mt-3">
+                              <div className="">
+                                <Slider 
+                                  getAriaLabel={() => 'Minimum distance shift'}
+                                  value={filterPrice}
+                                  
+                                  onChange={handleFilterByPrice}
+                                  valueLabelDisplay="auto"
+                                  disableSwap
+                                  sx={{
+                                    width: '100%',
+                                    color: '#f28288',
+                                    '& .MuiSlider-rail': {
+                                      background: '#cbcbcb',
+                                    },
+                                    '& .MuiSlider-thumb': {
+                                      borderRadius: '2px',
+                                      width: '16px',
+                                      height: '16px',
+                                      transform: 'rotate(45deg) translate(-50%, -22%)'
+                                    },
+                                    '& .MuiSlider-valueLabel': {
+                                      display: 'none'
+                                    }
+                                  }}
+                                />
+                                {/* <Range /> */}
+                              </div>
+                              <div className='flex items-center mt-2'>
+                                <button className='uppercase text-base px-3 py-2 text-white rounded-md bg-black-1 '>
+                                  filter
+                                </button>
+
+                                <div className="ml-auto flex items-center ">
+                                  <span className="text-sm font-medium ">price:</span> 
+                                  <p className='mx-2 w-[3ch]'>${filterPrice[0]}</p>
+                                  <span className='' >-</span>
+                                  <p className='ml-2 w-[3ch]'>${filterPrice[1]}</p>
+                                </div>
+                              </div>
                             </div>
                           </div>
+                          
+                          <div className="">
+                            <div className="">
+                              <h1 className="text-start font-greatVibes text-2xl font-medium">{sidebarShopLabel.label_sidebar_compare}</h1>
+                            </div>
+
+                            <div className=" pt-6 pb-[70px]">
+                              <p className='text-13 font-medium' >No product compare</p>
+                              <div className="mt-3 flex ">
+                                <button className="uppercase text-base px-3 py-2 text-white rounded-md bg-black-1">compare</button>
+                                <button className="ml-auto uppercase font-medium">clear all</button>
+                              </div>
+                            </div>
+                          </div>
+                          
+                          <div className="">
+                            <div className="">
+                              <h1 className="text-start font-greatVibes text-2xl font-medium">{sidebarShopLabel.label_sidebar_product_tag}</h1>
+                            </div>
+
+                            <ul className=" pt-6 pb-[70px] flex flex-wrap">
+                              {productTags.map((item, i) => <li className='p-2 border mr-3 mb-2 text-sm  border-b-c-1 rounded-md' key={i}>{item.name}</li>)}
+                            </ul>
+                          </div>
+                          {/* {productTags} */}
                       </div>
                     </Col>
-                    <Col lg={7}>
+                    <Col lg={9}>
                       <div className="">
                           {children} 
                       </div> 
