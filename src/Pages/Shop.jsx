@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import { FaAngleDown, FaBars, FaBuromobelexperte, FaStar } from 'react-icons/fa'
+import { FaAngleDown, FaBars, FaBuromobelexperte, FaShoppingCart, FaStar } from 'react-icons/fa'
 import { Col, Row } from 'reactstrap'
-import { CardProductAct, DefaultProCard } from '../Components'
+import { CardProductAct, DefaultProCard, DiamondButton } from '../Components'
 import Dropdown from '../Components/UI/Dropdown'
 import { products } from '../Fakedata/products'
 
@@ -182,7 +182,7 @@ const Shop = () => {
               <DefaultProCard data={product} adapteHeightTop={false} adapteHeightBottom={false} /> 
             </Col>
              : 
-            <Col lg={12}>
+            <Col key={index} lg={12} >
               <Row className="flex">
                 <Col lg={4} >
                   <div className="border !border-primary h-full flex items-center justify-center">
@@ -223,8 +223,16 @@ const Shop = () => {
                   </div>
 
                   <div className="flex items-center justify-between">
-                    <div className="">
-                      Add to cart
+                    <div className="flex  relative cursor-pointer">
+                      <div className='absolute top-1 bottom-0 left-0'>
+                        <DiamondButton
+                        containerButton=" group !border-none"
+                        button="!border-primary border p-2 bg-white  group-hover:!scale-[1.0] group-hover:!bg-white  origin-center"
+                        >
+                          {<FaShoppingCart className="!text-primary " />}
+                        </DiamondButton>
+                      </div>
+                      <div className="flex items-center justify-center ml-4  py-[11px] uppercase !bg-primary rounded-md pl-9 pr-3 text-white">Add to cart</div>
                     </div>
 
                     <div className="left-auto">

@@ -11,8 +11,9 @@ function App() {
         {routes.map((route, i) => {
           const Component = route.element
           const Layout = route.layout ?  route.layout : MainLayout
+          const layoutProps = route.layoutProps ? route.layoutProps: null
           const path = route.path
-          return <Route key={i} path={path} element={<Layout><Component/></Layout>}/>
+          return <Route key={i} path={path} element={<Layout {...layoutProps} ><Component/></Layout>}/>
         })}
       </Routes>
     </div>

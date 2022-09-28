@@ -57,7 +57,7 @@ const DefaultCard = ({ data, adapteHeightTop = true, adapteHeightBottom = true, 
               button="!border-primary border p-2 bg-white  group-hover:!scale-[1.0] group-hover:!bg-primary origin-center"
             >
               {<FaShoppingCart className="!text-primary group-hover:!text-white" />}
-              </DiamondButton>
+            </DiamondButton>
           </div>
         </div>
         {adapteHeightBottom && <div className="w-full  relative z-[-1]" style={{height: `${valueAdapteHeightBottom}px`}}></div>}
