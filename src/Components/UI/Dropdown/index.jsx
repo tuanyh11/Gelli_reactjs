@@ -1,4 +1,4 @@
-import React, { useEffect, useImperativeHandle, useRef } from 'react'
+import React, { useCallback, useEffect, useImperativeHandle, useRef } from 'react'
 import { FaAngleDown } from 'react-icons/fa'
 
 const Dropdown = ({renderHeader, renderBody, value, activeHead, activeContent, onClick, style={header: '', text: ''} }, ref) => {
@@ -44,7 +44,7 @@ const Dropdown = ({renderHeader, renderBody, value, activeHead, activeContent, o
                 <FaAngleDown className="ml-2 w-3 h-3"/>
             </div>
         }
-        <div ref={contentRef} className={`test z-[999999] absolute default-transition  opacity-0 left-0 right-0 bg-white top-[120%] shadow-sm `}>
+        <div ref={contentRef} className={`z-[999999] absolute default-transition  opacity-0 left-0 right-0 bg-white top-[120%] shadow-sm pointer-events-none`}>
           {renderBody && renderBody()}
         </div>
     </div>

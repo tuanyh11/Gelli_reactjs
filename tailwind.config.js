@@ -18,6 +18,7 @@ module.exports = {
           '2': '#4f4f4f',
           '3':'#8e8d8d',
           '4': '#848484',
+          '5': '#7f7f7f',
           'dark': '#777777',
           'bold': '#d7d7d7',
           'light': '#F4F4F4',
@@ -57,8 +58,11 @@ module.exports = {
       },
       borderWidth:{
         '1': '1px',
+      },
+      lineHeight: {
+        '1': '1',
       }
-    },
+    }
   },
   plugins: [],
 }

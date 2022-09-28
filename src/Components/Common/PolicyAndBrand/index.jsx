@@ -4,7 +4,7 @@ import Slider from 'react-slick'
 import Policy from '../../UI/Policy'
 import Brand from '../../UI/Brand'
 import Arrow from '../../UI/Arrow'
-import DiamondButton from '../../UI/Button/DiamondButton'
+import DiamondButton from '../../Common/Button/DiamondButton'
 import { FaAngleLeft, FaAngleRight, FaGlobe } from 'react-icons/fa'
 import brand_1 from '../../../Fakedata/images/VectorSmartObject4.png'
 

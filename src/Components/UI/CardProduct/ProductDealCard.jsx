@@ -1,6 +1,6 @@
 import React from 'react'
 import { FaHeart, FaSearch } from 'react-icons/fa'
-import DiamondButton from '../Button/DiamondButton'
+import DiamondButton from '../../Common/Button/DiamondButton'
 
 
 

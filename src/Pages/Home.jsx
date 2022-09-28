@@ -1,7 +1,7 @@
 import React from 'react'
 import Slider from 'react-slick'
 import { Col, Container, Row } from 'reactstrap'
-import { Banner, DefaultCard, DiamondButton, CateBanner, Title, ProductDealCard, CardTestimon, CardNews, Policy, Brand } from '../Components'
+import { Banner, DefaultProCard, DiamondButton, CateBanner, Title, ProductDealCard, CardTestimon, CardNews, Policy, Brand } from '../Components'
 import { banners, cateBanners } from '../Fakedata/uiData' 
 import home_title_image_1 from '../Fakedata/images/home-title-img-1.png'
 import { products } from '../Fakedata/products'
@@ -166,7 +166,9 @@ const Home = () => {
             <div>
             <Slider {...productsArrival} adaptiveHeight="true" >
               {products.map((product, i) => (
-                <DefaultCard key={i} data={product} />
+                <div className="px-15">
+                  <DefaultProCard key={i} data={product} />
+                </div>
               )) }
             </Slider>
             </div>
@@ -219,7 +221,9 @@ const Home = () => {
                   </div>
                   <Slider {...collectionProducts} >
                     {products.map((product, i) => (
-                      <DefaultCard key={i} data={product} />
+                    <div className="px-15">
+                      <DefaultProCard key={i} data={product} />
+                    </div>
                     )) }
                   </Slider>
                 </div>
