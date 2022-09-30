@@ -1,38 +1,30 @@
-import React, { useCallback, useEffect, useImperativeHandle, useRef } from 'react'
+import React, { useCallback, useEffect, useRef } from 'react'
 import { FaAngleDown } from 'react-icons/fa'
 
-const Dropdown = ({renderHeader, renderBody, value, activeHead, activeContent, onClick, style={header: '', text: ''} }, ref) => {
+const Dropdown = ({renderHeader, renderBody, value, activeHead, activeContent, onClick, style={header: '', text: ''} }) => {
   const toggleRef = useRef(null)
   const contentRef = useRef(null)
 
-  useImperativeHandle(ref, () => {
-    return {
-      turnOffEvent: () => {
-        const isActive = contentRef.current.classList.contains('active')
-        contentRef.current.classList.toggle('pointer-events-none', !isActive)
-      }
-    }
-  }, [])
 
   useEffect(() => {
-    if(toggleRef && contentRef) {
-      document.addEventListener('mousedown', e => {
-        if(toggleRef.current.contains(e.target) ) {
-          contentRef.current.classList.toggle('active')
-          const isActive = contentRef.current.classList.contains('active')
-          if(isActive) contentRef.current.classList.remove('pointer-events-none')
-        } else {
-          if(!contentRef.current.contains(e.target)) {
-            contentRef.current.classList.remove('active')
-            contentRef.current.classList.add('pointer-events-none')
-          } 
-        }
 
-        
-      })
+    const handleDecection = e => {
+      if(toggleRef.current.contains(e.target) ) {
+        contentRef.current.classList.toggle('active')
+        contentRef.current.classList.toggle('pointer-events-none')
+      } else {
+        if(!contentRef.current.contains(e.target)) {
+          contentRef.current.classList.remove('active')
+          contentRef.current.classList.add('pointer-events-none')
+        } 
+      }
+      
+    }
+    if(toggleRef && contentRef) {
+      document.addEventListener('click', handleDecection)
     }
 
-    return () => document.removeEventListener('mousedown', () => {})
+    return () => document.removeEventListener('click', handleDecection)
   }, [toggleRef, contentRef])
 
 
@@ -51,5 +43,5 @@ const Dropdown = ({renderHeader, renderBody, value, activeHead, activeContent, o
   )
 }
 
-export default React.forwardRef(Dropdown)
+export default Dropdown
 

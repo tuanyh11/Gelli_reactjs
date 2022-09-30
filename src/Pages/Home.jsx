@@ -82,7 +82,7 @@ const Home = () => {
     customPaging(i) {
       return (
         <div>
-          <DiamondButton containerButton='p-[2px] border-transparent hover:!border-white group w-4 h-4' button='!bg-gray-bold group-hover:!bg-white'/>
+          <DiamondButton containerButton=' border-transparent hover:!border-white group w-full h-full' button='!bg-gray-bold p-[4px] group-hover:!bg-white scale-[1.1]'/>
         </div>
       )
     }
@@ -112,7 +112,7 @@ const Home = () => {
     customPaging(i) {
       return (
         <div className='translate-y-[20px]'>
-          <DiamondButton containerButton='w-4 h-4 p-[2px] border-transparent hover:!border-primary container-button-second' button='!bg-gray-bold group-hover:!bg-primary'/>
+          <DiamondButton containerButton='w-full h-full transition border-transparent hover:!border-primary container-button-second !p-[2px] ' button='!bg-gray-bold p-[4px] group-hover:!bg-primary'/>
         </div>
       )
     }
@@ -130,7 +130,7 @@ const Home = () => {
     customPaging(i) {
       return (
         <div className='translate-y-[30px] '>
-          <DiamondButton containerButton='p-[2px] border-transparent hover:!border-primary container-button-second w-4 h-4 ' button='!bg-gray-bold group-hover:!bg-primary'/>
+          <DiamondButton containerButton='w-full h-full transition border-transparent hover:!border-primary container-button-second !p-[2px] ' button='!bg-gray-bold p-[4px] group-hover:!bg-primary'/>
         </div>
       )
     }

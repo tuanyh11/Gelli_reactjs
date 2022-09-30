@@ -9,7 +9,7 @@ const ArrowButton = () => {
                 <div className='absolute top-1 bottom-0 left-0'>
                     <DiamondButton
                         containerButton=" group !border-none"
-                        button="!border-primary border p-2 bg-white  group-hover:!scale-[1.0] group-hover:!bg-white  origin-center"
+                        button="!border-primary border p-2 bg-white   group-hover:!bg-white  origin-center"
                     >
                         {<FaShoppingCart className="!text-primary " />}
                     </DiamondButton>

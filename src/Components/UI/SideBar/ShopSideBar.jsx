@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import  Slider  from '@mui/material/Slider';
 import RectangleButton from './../../Common/Button/RectangleButton';
+import TitleWithArrow from '../Title/TitleWithArrow';
 
 const sidebarShopLabel = {
     label_sidebar_category: 'shop by categories',
@@ -69,10 +70,7 @@ const ShopSideBar = () => {
   return (
     <div className="">
     <div className="">
-      <div className="flex items-center">
-        <h1 className="text-start font-greatVibes text-2xl font-medium">{sidebarShopLabel.label_sidebar_category}</h1>
-        <div className="diamond relative flex-1 ml-3 h-[1px] bg-black-1"></div>
-      </div>
+        <TitleWithArrow text={sidebarShopLabel.label_sidebar_category} />
     
       <ul className="px-4 pt-6 pb-[70px]">
         {categories.map((item, i) => (
@@ -84,10 +82,7 @@ const ShopSideBar = () => {
     </div>
     
     <div className="">
-      <div className="flex items-center">
-        <h1 className="text-start font-greatVibes text-2xl font-medium">{sidebarShopLabel.label_sidebar_manufacturers}</h1>
-        <div className="diamond relative flex-1 ml-3 h-[1px] bg-black-1"></div>
-      </div>
+        <TitleWithArrow text={sidebarShopLabel.label_sidebar_manufacturers}/>
 
       <ul className="px-4 pt-6 pb-[70px]">
         {manufacturers.map((item, i) => (
@@ -100,10 +95,7 @@ const ShopSideBar = () => {
     </div>
 
     <div className="pb-[70px]">
-      <div className='flex items-center'>
-        <h1 className="text-start font-greatVibes text-2xl font-medium">{sidebarShopLabel.label_sidebar_manufacturers}</h1>
-        <div className="diamond relative flex-1 ml-3 h-[1px] bg-black-1"></div>
-      </div>
+        <TitleWithArrow text={sidebarShopLabel.label_sidebar_manufacturers}/>
       <div className="mt-3">
         <div className="">
           <Slider 
@@ -146,10 +138,7 @@ const ShopSideBar = () => {
     </div>
     
     <div className="">
-      <div className="flex items-center">
-        <h1 className="text-start font-greatVibes text-2xl font-medium">{sidebarShopLabel.label_sidebar_compare}</h1>
-        <div className="diamond relative flex-1 ml-3 h-[1px] bg-black-1"></div>
-      </div>
+        <TitleWithArrow text={sidebarShopLabel.label_sidebar_compare}/>
 
       <div className=" pt-6 pb-[70px]">
         <p className='text-13 font-medium' >No product compare</p>
@@ -161,10 +150,7 @@ const ShopSideBar = () => {
     </div>
     
     <div className="">
-      <div className="flex items-center">
-        <h1 className="text-start font-greatVibes text-2xl font-medium">{sidebarShopLabel.label_sidebar_product_tag}</h1>
-        <div className="diamond relative flex-1 ml-3 h-[1px] bg-black-1"></div>
-      </div>
+        <TitleWithArrow text={sidebarShopLabel.label_sidebar_product_tag}/> 
 
       <ul className=" pt-6 pb-[70px] flex flex-wrap">
         {productTags.map((item, i) => <li className='p-2 border mr-3 mb-2 text-sm  border-b-c-1 rounded-md' key={i}>{item.name}</li>)}

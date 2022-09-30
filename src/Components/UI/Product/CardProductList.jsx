@@ -1,7 +1,6 @@
 import React from 'react'
 import { Row, Col } from 'reactstrap';
 import { FaStar, FaShoppingCart } from 'react-icons/fa';
-import DiamondButton from '../../Common/Button/DiamondButton';
 import CardProductAct from './CardProductAct';
 import ArrowButton from './../../Common/Button/ArrowButton';
 

@@ -16,6 +16,8 @@
     @apply !opacity-100 top-[110%] !pointer-events-auto
   }
 
+  
+
   strong {
     @apply font-bold
   }
@@ -41,7 +43,6 @@
   }
 
 }
-
 
 
 
@@ -72,7 +73,7 @@ body {
 
 .container-button{
   border: 1px transparent solid;
-  transform: rotate(45deg);
+  transform: rotate(45deg) ;
   transition: all ease 300ms;
   padding: 10px;
   transform-origin: center center;
@@ -142,10 +143,11 @@ body {
 
 .container-dots .slick-active .container-button-second {
   border-color: #f28288;
+  transform: scale(1.2) rotate(45deg);
 }
 
 .container-dots .slick-active .container-button-second .button {
-  transform: scale(1.2);
+  transform: scale(1.0);
   background: #f28288 !important; 
 }
 /* table */
@@ -242,3 +244,10 @@ body {
   left: 0%;
   transform: translateY(-50%) rotate(45deg);
 }
+
+/* react slick */
+
+ .product-detail-dots-custom > li{
+  width: 100% !important;
+  height: 100% !important;
+} 

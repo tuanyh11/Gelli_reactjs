@@ -13,7 +13,7 @@ const DefaultCard = ({ data, adapteHeightTop = true, adapteHeightBottom = true, 
               <div className="mr-2 product-action-button">
                 <DiamondButton
                     containerButton="!w-full !h-full group "
-                    button="!border-primary border p-2 bg-white  group-hover:!scale-[1.0] group-hover:!bg-primary origin-center"
+                    button="!border-primary border p-2 bg-white  group-hover:!bg-primary origin-center"
                 >
                     {<FaSearch className="!text-primary group-hover:!text-white" />}
                 </DiamondButton>
@@ -21,7 +21,7 @@ const DefaultCard = ({ data, adapteHeightTop = true, adapteHeightBottom = true, 
               <div className="m-2 product-action-button">
                 <DiamondButton
                     containerButton="!w-full !h-full group "
-                    button="!border-primary border p-2 bg-white  group-hover:!scale-[1.0] group-hover:!bg-primary origin-center"
+                    button="!border-primary border p-2 bg-white  group-hover:!bg-primary origin-center"
                 >
                     {<FaHeart className="!text-primary group-hover:!text-white" />}
                 </DiamondButton>
@@ -29,7 +29,7 @@ const DefaultCard = ({ data, adapteHeightTop = true, adapteHeightBottom = true, 
               <div className="ml-2 product-action-button">
                 <DiamondButton
                     containerButton="!w-full !h-full group "
-                    button="!border-primary border p-2 bg-white  group-hover:!scale-[1.0] group-hover:!bg-primary origin-center"
+                    button="!border-primary border p-2 bg-white  group-hover:!bg-primary origin-center"
                 >
                     {<FaHeart className="!text-primary group-hover:!text-white" />}
                 </DiamondButton>
@@ -54,7 +54,7 @@ const DefaultCard = ({ data, adapteHeightTop = true, adapteHeightBottom = true, 
           <div className="absolute bottom-0 translate-y-1/2 left-1/2 -translate-x-1/2 product-action-addcart ">
             <DiamondButton
               containerButton="group !w-[60px] !h-[60px]"
-              button="!border-primary border p-2 bg-white  group-hover:!scale-[1.0] group-hover:!bg-primary origin-center"
+              button="!border-primary border p-2 bg-white   group-hover:!bg-primary origin-center"
             >
               {<FaShoppingCart className="!text-primary group-hover:!text-white" />}
             </DiamondButton>

@@ -1,9 +1,7 @@
 import React, { useState } from 'react'
-import Slider from '@mui/material/Slider';
 import RectangleButton from './../../Common/Button/RectangleButton';
 import { products } from '../../../Fakedata/products';
-import CardProductList from '../CardProduct/CardProductList';
-import CardProFeatured from './../CardProduct/CardProFeatured';
+import CardProFeatured from './../Product/CardProFeatured';
 
 const sidebarShopLabel = {
     label_sidebar_category: 'shop by categories',

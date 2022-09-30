@@ -43,11 +43,8 @@ const Main = () => {
 
     const [category, setCategory] = useState(categories[0].name);
 
-    const modelRef = useRef()
-
     const handleOnClick = (item) => {
         setCategory(item.name)
-        modelRef.current.turnOffEvent()
     }
 
   return (
@@ -65,7 +62,6 @@ const Main = () => {
                             value={category} 
                             activeHead={true}
                             style={{text: 'w-[100px] limit'}}
-                            ref={modelRef}
                         />
                     </div>
                     <div className="w-[2px] h-[13px] block bg-b-1 ml-2 "></div>
