@@ -40,9 +40,11 @@ const ProductSideBar = () => {
                     <h1 className="text-start font-greatVibes text-2xl font-medium">{sidebarShopLabel.label_featured_product}</h1>
                     <div className="diamond relative flex-1 ml-3 h-[1px] bg-black-1"></div>
                 </div>
-                <ul className="">
-                    {products.map((item, i) => (
-                        <CardProFeatured key={i} data={item}/>
+                <ul className="pt-[30px] pb-[70px] !pl-5">
+                    {products.slice(0, 8).map((item, i) => (
+                        <div className="!mb-5 last:mb:-0" >
+                            <CardProFeatured key={i} data={item}/>
+                        </div>
                     ))}
                 </ul>
             </div>

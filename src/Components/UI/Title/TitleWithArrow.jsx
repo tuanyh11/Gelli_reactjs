@@ -1,11 +1,11 @@
 import React from 'react'
 
-const TitleWithArrow = ({text}) => {
+const TitleWithArrow = ({text, containerStyle, customArrow, arrowStyle}) => {
   return (
-    <div className="flex items-center">
+    <div className={`${containerStyle ? containerStyle: "flex items-center"}`}>
         <h1 className="text-start font-greatVibes text-2xl font-medium">{text}</h1>
-        <div className="diamond relative flex-1 ml-3 h-[1px] bg-black-1"></div>
-  </div>
+        {customArrow ? customArrow() : <div className={arrowStyle ? arrowStyle : 'diamond relative flex-1 ml-3 h-[1px] bg-black-1'}></div>}
+    </div>
   )
 }
 

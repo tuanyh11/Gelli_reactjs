@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { FaAngleDown, FaAngleLeft, FaAngleRight, FaFacebookF, FaGoogle, FaStar, FaTwitter } from 'react-icons/fa';
 import Slider from 'react-slick';
 import { Col, Row } from 'reactstrap';
-import { Arrow, CardProductAct, DiamondButton, RectangleButton, Review, TitleWithArrow } from '../Components';
+import { Arrow, CardProductAct, DefaultProCard, DiamondButton, RectangleButton, Review, TitleWithArrow } from '../Components';
 import ArrowButton from '../Components/Common/Button/ArrowButton';
 import Dropdown from '../Components/UI/Dropdown';
 import { products } from './../Fakedata/products';
@@ -56,6 +56,8 @@ const ProductDetail = () => {
 
     const [selectSize, setSelectSize] = useState(products[0]?.size[0]?.value)
 
+    const [page, setPage] = useState('description')
+
     const settings = {
         dots: false,
         dotsClass: "slick-dots !flex product-detail-dots-custom",
@@ -77,7 +79,15 @@ const ProductDetail = () => {
         </Arrow>,
     };
 
-   
+    const productsRelatedSetting = {
+        dots: false,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        nextArrow: <Arrow classContainer="absolute !translate-y-[-200%] bg-transparent absolute top-1/2 left-[-10px] z-[999999999] cursor-pointer"><FaAngleLeft className=' w-6 h-6'/></Arrow>,
+        prevArrow: <Arrow classContainer="absolute !translate-y-[-200%] bg-transparent absolute top-1/2 right-[-8px] z-[999999999] cursor-pointer"><FaAngleRight className="w-6 h-6" /></Arrow>,
+      }
 
     return (
         <div>
@@ -183,29 +193,61 @@ const ProductDetail = () => {
                 </Row>
             </section>
 
-            <section className="">
+            <section className="mb-[100px]">
                 <div className='flex items-center !mb-5'>
                     <div className='mr-3 text-sm font-semibold'>
-                        <RectangleButton className={'uppercase border border-c-1 px-3 py-2 rounded-md'} text={'descrition'}/>
+                        <RectangleButton className={'uppercase border border-c-1 px-3 py-2 rounded-md'} text={'description'} onClick={(value) => setPage(value)}/>
                     </div>
                     <div className='mr-3 text-sm font-semibold'>
-                        <RectangleButton className={'uppercase border border-c-1 px-3 py-2 rounded-md'} text={'additional inffomation'}/>
+                        <RectangleButton className={'uppercase border border-c-1 px-3 py-2 rounded-md'} text={'additional inffomation'} onClick={(value) => setPage(value)}/>
                     </div>
                     <div className='mr-3 text-sm font-semibold'>
-                        <RectangleButton className={'uppercase border border-c-1 px-3 py-2 rounded-md '} text={'review'}/>
+                        <RectangleButton className={'uppercase border border-c-1 px-3 py-2 rounded-md '} text={'review'} onClick={(value) => setPage(value)}/>
                     </div>
                 </div>
-                {/* descrition */}
-                {/* <div className='px-10 py-8 border rounded-md text-13 leading-6'>
-                    <p >
-                        {product.description}
-                    </p>
-                </div>                */}
-                <div className="">
-                    <TitleWithArrow text={'1 comment'} />
+                {/* description */}
+                {page.toLowerCase() === 'description' && 
+                    <div className='px-10 py-8 border rounded-md text-13 leading-6 relative pseudo-diamond after:top-0 after:rotate-45 after:-translate-y-1/2 after:left-16 after:bg-gray-300'>
+                        <p >
+                            {product.description}
+                        </p>
+                    </div>               
+                }
+                {/* review */}
+                {page.toLowerCase() === 'review' &&
                     <div className="">
-                        <Review />
+                        <TitleWithArrow text={'1 Review'} />
+                        <div className="mt-10">
+                            <Review />
+                        </div>
+                        <div className="mt-8">
+                            <div className="mb-3">
+                                <TitleWithArrow arrowStyle={'diamond relative flex-1 ml-3 h-[1px] bg-gray-300'} text={'lave your review'} />
+                            </div>
+                        </div>
                     </div>
+                }
+            </section>
+
+            <section className="">
+                <div className="flex justify-center">
+                    <TitleWithArrow 
+                        text={'related products'} 
+                        containerStyle="block " 
+                        customArrow={() => 
+                            <div className='!mt-6 relative after:bg-black-1 after:rotate-45 after:left-1/2  pseudo-diamond top-0 after:-translate-y-1/2 after:-translate-x-1/2'>
+                                <div className='after:top-0 after:h-[1px] after:bg-gradient-to-r after:w-1/2 after:right-0 after:content-[""] after:absolute after:from-black-1 after:to-gray-100 before:top-0 before:h-[1px] before:bg-gradient-to-l before:w-1/2 before:left-0 before:content-[""] before:absolute before:from-black-1 before:to-gray-100'></div>
+                            </div>}
+                    />
+                </div>
+                <div className="mt-10">
+                    <Slider {...productsRelatedSetting} adaptiveHeight="true" >
+                        {products.map((product, i) => (
+                            <div className="px-15">
+                                <DefaultProCard key={i} data={product} />
+                            </div>
+                        )) }
+                    </Slider>
                 </div>
             </section>
         </div>

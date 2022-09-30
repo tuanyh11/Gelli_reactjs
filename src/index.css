@@ -251,3 +251,10 @@ body {
   width: 100% !important;
   height: 100% !important;
 } 
+
+.pseudo-diamond::after {
+  content: "";
+  position: absolute;
+  width: 12px;
+  height: 12px;
+}
