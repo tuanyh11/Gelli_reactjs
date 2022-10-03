@@ -1,7 +1,8 @@
-import { LayoutWithSideBar, ProductSideBar } from "../Components"
+
+import { BlogSideBar, LayoutWithSideBar, ProductSideBar } from "../Components"
 import {ShopSideBar} from "../Components/"
-import { Home, Cart, Shop } from "../Pages"
-import ProductDetail from './../Pages/ProductDetail';
+import { Home, Cart, Shop, BlogDetail ,ProductDetail, Checkout } from "../Pages"
+import Blog from "../Pages/Blog";
 
 
 export const routes = [
@@ -20,7 +21,6 @@ export const routes = [
         element: Shop,
         layout: LayoutWithSideBar,
         layoutProps: {
-            positionSideBar:'left', 
             SideBarElement: ShopSideBar
         }
     },
@@ -31,6 +31,32 @@ export const routes = [
         layoutProps: {
             positionSideBar:'right', 
             SideBarElement: ProductSideBar
+        }
+    },
+    {
+        path: "/blog",
+        element: Blog,
+        layout: LayoutWithSideBar,
+        layoutProps: {
+            SideBarElement: BlogSideBar,
+            offPolicyAndBrand: true
+        }
+    },
+    {
+        path: "/blog/:id",
+        element: BlogDetail,
+        layout: LayoutWithSideBar,
+        layoutProps: {
+            SideBarElement: BlogSideBar,
+            offPolicyAndBrand: true
+        }
+    },
+    {
+        path: "/checkout",
+        element: Checkout,
+        layout: null,
+        layoutProps: {
+            offPolicyAndBrand: true
         }
     }
 ]

@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import RectangleButton from './../../Common/Button/RectangleButton';
 import { products } from '../../../Fakedata/products';
-import CardProFeatured from './../Product/CardProFeatured';
+import CardProFeatured from '../../UI/Product/CardProFeatured';
+import TitleWithArrow from '../../UI/Title/TitleWithArrow';
 
 const sidebarShopLabel = {
     label_sidebar_category: 'shop by categories',
@@ -32,29 +33,23 @@ const productTags = [
 
 
 const ProductSideBar = () => {
-
+    
     return (
         <div className="">
             <div className="">
-                <div className="flex items-center">
-                    <h1 className="text-start font-greatVibes text-2xl font-medium">{sidebarShopLabel.label_featured_product}</h1>
-                    <div className="diamond relative flex-1 ml-3 h-[1px] bg-black-1"></div>
-                </div>
+                <TitleWithArrow text={sidebarShopLabel.label_featured_product}/>
                 <ul className="pt-[30px] pb-[70px] !pl-5">
                     {products.slice(0, 8).map((item, i) => (
-                        <div className="!mb-5 last:mb:-0" >
-                            <CardProFeatured key={i} data={item}/>
+                        <div key={i} className="!mb-5 last:mb:-0" >
+                            <CardProFeatured  data={item}/>
                         </div>
                     ))}
                 </ul>
             </div>
             
             <div className="">
-                <div className="flex items-center">
-                    <h1 className="text-start font-greatVibes text-2xl font-medium">{sidebarShopLabel.label_sidebar_compare}</h1>
-                    <div className="diamond relative flex-1 ml-3 h-[1px] bg-black-1"></div>
-                </div>
-
+                <TitleWithArrow text={sidebarShopLabel.label_sidebar_compare}/>
+   
                 <div className=" pt-6 pb-[70px]">
                     <p className='text-13 font-medium' >No product compare</p>
                     <div className="mt-3 flex ">
@@ -65,10 +60,7 @@ const ProductSideBar = () => {
             </div>
 
             <div className="">
-                <div className="flex items-center">
-                    <h1 className="text-start font-greatVibes text-2xl font-medium">{sidebarShopLabel.label_sidebar_product_tag}</h1>
-                    <div className="diamond relative flex-1 ml-3 h-[1px] bg-black-1"></div>
-                </div>
+                <TitleWithArrow text={sidebarShopLabel.label_sidebar_product_tag}/>
 
                 <ul className=" pt-6 pb-[70px] flex flex-wrap">
                     {productTags.map((item, i) => <li key={i} className='p-2 border mr-3 mb-2 text-sm  border-b-c-1 rounded-md' >{item.name}</li>)}

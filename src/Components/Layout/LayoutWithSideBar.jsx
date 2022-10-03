@@ -5,7 +5,7 @@ import Header from '../Common/Header'
 import PolicyAndBrand from '../Common/PolicyAndBrand'
 
 
-const LayoutWithSideBar = ({children, positionSideBar, SideBarElement}) => {
+const LayoutWithSideBar = ({children, positionSideBar = "left", SideBarElement, offPolicyAndBrand}) => {
 
 
 
@@ -37,7 +37,7 @@ const LayoutWithSideBar = ({children, positionSideBar, SideBarElement}) => {
                   </Row>
                 </Container>
             </div>
-        <PolicyAndBrand />
+        {!offPolicyAndBrand && <PolicyAndBrand />}
         <Footer/>
     </div>
   )

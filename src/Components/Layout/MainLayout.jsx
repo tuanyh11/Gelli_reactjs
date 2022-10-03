@@ -5,13 +5,13 @@ import PolicyAndBrand from '../Common/PolicyAndBrand'
 import { useLocation } from 'react-router-dom'
 
 
-function MainLayout({children}) {
-  console.log(useLocation())
+function MainLayout({children, offPolicyAndBrand}) {
+  // console.log(useLocation())
   return (
     <div>
       <Header/>
         {children}
-        <PolicyAndBrand />
+        {!offPolicyAndBrand && <PolicyAndBrand />}
       <Footer/>
     </div>
   )

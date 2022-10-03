@@ -1,5 +1,5 @@
 
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import {routes} from './Routes'
 import './App.css';
 import { MainLayout } from './Components';
@@ -8,6 +8,7 @@ function App() {
   return (
     <div className="App">
       <Routes>
+        <Route path='/home' element={<Navigate to="/" state={{path: 'home'}}/>}/>
         {routes.map((route, i) => {
           const Component = route.element
           const Layout = route.layout ?  route.layout : MainLayout

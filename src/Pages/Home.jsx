@@ -6,7 +6,7 @@ import { banners, cateBanners } from '../Fakedata/uiData'
 import home_title_image_1 from '../Fakedata/images/home-title-img-1.png'
 import { products } from '../Fakedata/products'
 import Arrow from './../Components/UI/Arrow/index';
-import { FaAngleLeft, FaAngleRight, FaGlobe, FaShoppingCart } from 'react-icons/fa'
+import { FaAngleLeft, FaAngleRight } from 'react-icons/fa'
 import collection_image from '../Fakedata/images/Layer47.png'
 import daily_title_image_1 from '../Fakedata/images/VectorSmartObject13.png'
 import couple_image from '../Fakedata/images/Layer48.png'
@@ -135,9 +135,6 @@ const Home = () => {
       )
     }
   }
-    
-
-    
 
   return (
     <div>
@@ -166,8 +163,8 @@ const Home = () => {
             <div>
             <Slider {...productsArrival} adaptiveHeight="true" >
               {products.map((product, i) => (
-                <div className="px-15">
-                  <DefaultProCard key={i} data={product} />
+                <div key={i} className="px-15">
+                  <DefaultProCard  data={product} />
                 </div>
               )) }
             </Slider>
@@ -221,8 +218,8 @@ const Home = () => {
                   </div>
                   <Slider {...collectionProducts} >
                     {products.map((product, i) => (
-                    <div className="px-15">
-                      <DefaultProCard key={i} data={product} />
+                    <div  key={i} className="px-15">
+                      <DefaultProCard data={product} />
                     </div>
                     )) }
                   </Slider>

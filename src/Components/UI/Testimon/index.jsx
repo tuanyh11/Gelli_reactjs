@@ -4,10 +4,12 @@ import { Col, Row } from 'reactstrap'
 const CardTestimon = ({data}) => {
   return (
     <div >
-        <Row className='flex'>
+        <Row className='flex items-center'>
             <Col lg={4}>
                 <div className="flex items-center">
-                <img src={data.avatar} alt="" className='w-[120px] h-[120px] object-cover rounded-full border-[3px] border-solid !border-primary' />
+                <div className=" p-1">
+                    <img src={data.avatar} alt="" className='w-[120px] h-[120px] mx-auto object-cover  rounded-full border-4 border-solid !border-primary' />
+                </div>
                 <div className="ml-4 ">
                     <h2 className="text-sm !text-primary font-bold">{data.name}</h2>
                     <h2 className="text-sm font-medium text-gray-3">{data.rule}</h2>

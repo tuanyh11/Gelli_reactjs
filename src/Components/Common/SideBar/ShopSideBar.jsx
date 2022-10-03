@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import  Slider  from '@mui/material/Slider';
-import RectangleButton from './../../Common/Button/RectangleButton';
-import TitleWithArrow from '../Title/TitleWithArrow';
+import TitleWithArrow from '../../UI/Title/TitleWithArrow';
+import RectangleButton from '../Button/RectangleButton';
 
 const sidebarShopLabel = {
     label_sidebar_category: 'shop by categories',

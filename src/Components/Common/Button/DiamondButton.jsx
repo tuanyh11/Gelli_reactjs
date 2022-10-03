@@ -10,9 +10,9 @@ const DiamondButton = ({
 }) => {
   return (
     <div className={`container-button !p-[2px] hover:border-primary group rounded-sm ${containerButton}`} >
-      <button className={`button rounded-sm ${button}`}>
+      <div className={`button rounded-sm ${button}`}>
           {children && <div className={`content ${content}`}>{children}</div>}
-      </button>
+      </div>
     </div>
   )
 }
