@@ -6,7 +6,7 @@ import DiamondButton from '../../Common/Button/DiamondButton'
 
 const ProductDealCard = ({data}) => {
   return (
-    <div className='p-2'>
+    <div >
         <div className="w-full h-[20px] relative z-[-1]"></div>
         <div className=" p-[30px] border border-c-4 hover:!border-primary default-transition relative z-[1] card-product-content">
           <div className="absolute flex items-center top-0 bg-white !-translate-y-1/2 left-1/2 -translate-x-1/2 product-action-addcart">

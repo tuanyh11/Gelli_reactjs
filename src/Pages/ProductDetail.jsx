@@ -34,8 +34,34 @@ const ProductDetail = () => {
         speed: 500,
         slidesToShow: 3,
         slidesToScroll: 1,
-        nextArrow: <Arrow classContainer="absolute !translate-y-[-200%] bg-transparent absolute top-1/2 left-[-10px] z-[999999999] cursor-pointer"><FaAngleLeft className=' w-6 h-6'/></Arrow>,
-        prevArrow: <Arrow classContainer="absolute !translate-y-[-200%] bg-transparent absolute top-1/2 right-[-8px] z-[999999999] cursor-pointer"><FaAngleRight className="w-6 h-6" /></Arrow>,
+        nextArrow: <Arrow classContainer="absolute !translate-y-[-140%] z-[99999999999]  bg-transparent absolute top-1/2 p-2 left-[10px] lg:left-[-30px] cursor-pointer"><FaAngleLeft className=' w-6 h-6'/></Arrow>,
+        prevArrow: <Arrow classContainer="absolute !translate-y-[-140%] z-[99999999999] bg-transparent absolute top-1/2 p-2 right-[10px]  lg:right-[-30px] cursor-pointer"><FaAngleRight className="w-6 h-6" /></Arrow>,
+        responsive: [
+            {
+              breakpoint: 1024,
+              settings: {
+                slidesToShow: 3,
+                slidesToScroll: 3,
+                infinite: true,
+                dots: true
+              }
+            },
+            {
+              breakpoint: 768,
+              settings: {
+                slidesToShow: 2,
+                slidesToScroll: 2,
+                initialSlide: 2
+              }
+            },
+            {
+              breakpoint: 480,
+              settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1
+              }
+            }
+          ],
       }
 
     return (
@@ -45,15 +71,15 @@ const ProductDetail = () => {
             </section>
 
             <section className="mb-[100px]">
-                <div className='flex items-center !mb-5'>
-                    <div className='mr-3 text-sm font-semibold'>
-                        <RectangleButton className={'uppercase border border-c-1 px-3 py-2 rounded-md'} text={'description'} onClick={(value) => setPage(value)}/>
+                <div className='flex items-center md:justify-start justify-center !mb-5'>
+                    <div className='mr-3 text-sm font-semibold max-w-[33.3%] md:w-auto'>
+                        <RectangleButton className={`uppercase border  limit max-w-full md:w-auto  border-c-1 px-3 py-2 rounded-md ${page === 'description' ? '!bg-primary text-white': ''}`} text={'description'}  onClick={(value) => setPage(value)}/>
                     </div>
-                    <div className='mr-3 text-sm font-semibold'>
-                        <RectangleButton className={'uppercase border border-c-1 px-3 py-2 rounded-md'} text={'additional inffomation'} onClick={(value) => setPage(value)}/>
+                    <div className='mr-3 text-sm font-semibold max-w-[33.3%] md:w-auto'>
+                        <RectangleButton className={`uppercase border  limit max-w-full md:w-auto  border-c-1 px-3 py-2 rounded-md ${page === 'additional inffomation' ? '!bg-primary text-white': ''}`} text={'additional inffomation'}  onClick={(value) => setPage(value)}/>
                     </div>
-                    <div className='mr-3 text-sm font-semibold'>
-                        <RectangleButton className={'uppercase border border-c-1 px-3 py-2 rounded-md '} text={'review'} onClick={(value) => setPage(value)}/>
+                    <div className=' text-sm font-semibold max-w-[33.3%] md:w-auto'>
+                        <RectangleButton className={`uppercase border  limit max-w-full md:w-auto  border-c-1 px-3 py-2 rounded-md ${page === 'review' ? '!bg-primary text-white': ''}`} text={'review'} onClick={(value) => setPage(value)}/>
                     </div>
                 </div>
                 {/* description */}

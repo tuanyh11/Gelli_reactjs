@@ -60,7 +60,7 @@ const BlogDetail = () => {
     <div className="mb-[90px]">
       {/* blog */}
       <div className="">
-        <CardBlog blog={blog} />
+        <CardBlog blog={blog} showReadMore={false} />
       </div>
 
       <div className="py-[60px] mt-[30px] border-t-1 border-c-1">

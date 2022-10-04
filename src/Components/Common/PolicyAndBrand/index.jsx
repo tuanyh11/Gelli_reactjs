@@ -64,15 +64,41 @@ const PolicyAndBrand = ({offPolicy, offBrand}) => {
         nextArrow: 
           <Arrow classContainer="absolute !translate-y-[-50%] bg-transparent absolute top-1/2 left-[-10px] cursor-pointer z-[999999]">
             <DiamondButton containerButton='!p-[1px]  border-transparent hover:!border-primary container-button-second !rounded-md ' button='!bg-white border-gray-4 group-hover:!border-primary  border-1 group-hover:!bg-primary p-1 !rounded-md'>
-              <FaAngleLeft className="w-3 h-3 text-gray-4 group-hover:text-white default-transition" />
+              <FaAngleLeft className="w-3 h-3 text-gray-4 group-hover:text-white default-transition " />
             </DiamondButton>
           </Arrow>,
         prevArrow: 
           <Arrow classContainer="absolute !translate-y-[-50%] bg-transparent absolute top-1/2 right-[-10px] cursor-pointer z-[999999]">
-            <DiamondButton containerButton='!p-[1px] border-transparent hover:!border-primary container-button-second  !rounded-md' button='!bg-white border-gray-4 group-hover:!border-primary border-1 group-hover:!bg-primary  p-1'>
-              <FaAngleRight className="w-3 h-3 text-gray-4 group-hover:text-white default-transition !rounded-md" />
+            <DiamondButton containerButton='!p-[1px] border-transparent hover:!border-primary container-button-second  !rounded-md' button='!bg-white border-gray-4 group-hover:!border-primary border-1 group-hover:!bg-primary  p-1 !rounded-md'>
+              <FaAngleRight className="w-3 h-3 text-gray-4 group-hover:text-white default-transition " />
             </DiamondButton>
           </Arrow>,
+          responsive: [
+            {
+              breakpoint: 1024,
+              settings: {
+                slidesToShow: 3,
+                slidesToScroll: 3,
+                infinite: true,
+                dots: true
+              }
+            },
+            {
+              breakpoint: 600,
+              settings: {
+                slidesToShow: 2,
+                slidesToScroll: 2,
+                initialSlide: 2
+              }
+            },
+            {
+              breakpoint: 480,
+              settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1
+              }
+            }
+          ]
       }
 
   return (
@@ -81,7 +107,7 @@ const PolicyAndBrand = ({offPolicy, offBrand}) => {
           <Container>
             <Row>
               {policy.map((item, i) => (
-                <Col key={i} lg={3}>
+                <Col  md={6} key={i} lg={3}>
                     <Policy key={i} data={item} />
                 </Col>
               ))}
@@ -92,13 +118,13 @@ const PolicyAndBrand = ({offPolicy, offBrand}) => {
         
         { !offBrand &&  <section className='mt-[100px]'>
           <Row className="">
-            <Col lg={3} className="bg-black-1">
+            <Col md={12} lg={3} className="bg-black-1 mt-0">
                 <div className="flex flex-col justify-center items-center py-16 h-full text-white ">
                   <h1 className="uppercase text-lg mb-1 ">shop by</h1>
                   <h1 className="font-greatVibes text-4xl font-medium">popular brand</h1>
                 </div>
             </Col>
-            <Col lg={9} className="bg-[#ececec] ">
+            <Col md={12} lg={9} className="bg-[#ececec] mt-0 lg:mt-[30px]">
                 <div className="px-6 py-16 ">
                   <Slider {...brandSettings}>
                     {brands.map((item, i) => (

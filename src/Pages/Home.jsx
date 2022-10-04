@@ -94,8 +94,34 @@ const Home = () => {
     speed: 500,
     slidesToShow: 4,
     slidesToScroll: 1,
-    nextArrow: <Arrow classContainer="absolute !translate-y-[-200%] bg-transparent absolute top-1/2 left-[-30px] cursor-pointer"><FaAngleLeft className=' w-6 h-6'/></Arrow>,
-    prevArrow: <Arrow classContainer="absolute !translate-y-[-200%] bg-transparent absolute top-1/2 right-[-30px] cursor-pointer"><FaAngleRight className="w-6 h-6" /></Arrow>,
+    nextArrow: <Arrow classContainer="absolute !translate-y-[-140%] z-[99999999999] bg-transparent absolute top-1/2 left-[10px] p-2 lg:left-[-30px] cursor-pointer"><FaAngleLeft className=' w-6 h-6'/></Arrow>,
+    prevArrow: <Arrow classContainer="absolute !translate-y-[-140%] z-[99999999999] bg-transparent absolute top-1/2 right-[10px] p-2 lg:right-[-30px] cursor-pointer"><FaAngleRight className="w-6 h-6" /></Arrow>,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: true
+        }
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          initialSlide: 2
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }
+    ]
   }
 
   const collectionProducts = {
@@ -106,9 +132,34 @@ const Home = () => {
     slidesToScroll: 1,
     appendDots: dots => <ul >{dots}</ul>,
     dotsClass:"container-dots ",
-    nextArrow: <Arrow classContainer="absolute !translate-y-[-200%] bg-transparent absolute top-1/2 left-[-30px] cursor-pointer"><FaAngleLeft className=' w-6 h-6'/></Arrow>,
-    prevArrow: <Arrow classContainer="absolute !translate-y-[-200%] bg-transparent absolute top-1/2 right-[-30px] cursor-pointer"><FaAngleRight className="w-6 h-6" /></Arrow>,
-
+    nextArrow: <Arrow classContainer="absolute !translate-y-[-140%] z-[99999999999]  bg-transparent absolute top-1/2 p-2 left-[10px] lg:left-[-30px] cursor-pointer"><FaAngleLeft className=' w-6 h-6'/></Arrow>,
+    prevArrow: <Arrow classContainer="absolute !translate-y-[-140%] z-[99999999999] bg-transparent absolute top-1/2 p-2 right-[10px]  lg:right-[-30px] cursor-pointer"><FaAngleRight className="w-6 h-6" /></Arrow>,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: true
+        }
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          initialSlide: 2
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }
+    ],
     customPaging(i) {
       return (
         <div className='translate-y-[20px]'>
@@ -150,7 +201,7 @@ const Home = () => {
         <section>
           <Container >
             <Row > 
-              {cateBanners.map((item, i) => (<Col key={i}><CateBanner  image={item.image} title={item.title} description={item.description} /></Col>))}
+              {cateBanners.map((item, i) => (<Col lg={4} md={6} sm={12} key={i}><CateBanner  image={item.image} title={item.title} description={item.description} /></Col>))}
             </Row>
           </Container>
         </section>
@@ -163,7 +214,7 @@ const Home = () => {
             <div>
             <Slider {...productsArrival} adaptiveHeight="true" >
               {products.map((product, i) => (
-                <div key={i} className="px-15">
+                <div key={i} className="md:px-15">
                   <DefaultProCard  data={product} />
                 </div>
               )) }
@@ -174,22 +225,21 @@ const Home = () => {
         
         <section>
             <Row>
-              <Col lg={6}>
+              <Col sm={12} md={12} lg={6}>
                 <Banner >
-                  <div className='p-[240px_100px_140px_100px] bg-[#f7f7f7] bg-no-repeat relative [background-position:0%_10%]' style={{backgroundImage: `url(${collection.image})`}}>
+                  <div className=' p-[80px_60px_140px_30px] md:p-[240px_100px_140px_100px] bg-[#f7f7f7] bg-no-repeat relative [background-position:30%_10%] md:[background-position:0%_10%]' style={{backgroundImage: `url(${collection.image})`}}>
                     <div className=" text-start">
-                      <h1 className="text-[120px] uppercase font-bold ">special</h1>
-                      
+                      <h1 className="text-6xl md:text-[120px] uppercase font-bold ">special</h1>
                     </div>
-                    <div className="ml-[150px] ">
-                      <h2 className="font-dry-brush text-[100px] capitalize  !text-primary -mt-16 tracking-widest">Collections</h2>
+                    <div className="ml-0 md:mt-10 relative md:ml-[150px] ">
+                      <h2 className="font-dry-brush text-4xl capitalize absolute right-0 top-0 -translate-x-1/2 translate-y-full  !text-primary -mt-16 tracking-widest md:static md:translate-x-0 md:text-[100px] md:translate-y-0">Collections</h2>
                       <p className='font-lato text-[15px] pt-[20px] '>{collection.description}</p>
                     </div>
                   </div>
                 </Banner>
               </Col>
-              <Col lg={6}>
-                <div className="pr-10 pl-6">
+              <Col sm={12} md={12} lg={6}>
+                <div className="px-[12px] lg:pr-10 lg:pl-6 mt-[70px] md:!px-[35px] lg:mt-0">
                   <div className="">
                     <Title text={bestSelling.tile} image={bestSelling.image} />
                   </div>
@@ -218,7 +268,7 @@ const Home = () => {
                   </div>
                   <Slider {...collectionProducts} >
                     {products.map((product, i) => (
-                    <div  key={i} className="px-15">
+                    <div  key={i} className=" md:px-15 ">
                       <DefaultProCard data={product} />
                     </div>
                     )) }
@@ -244,7 +294,10 @@ const Home = () => {
                   <div>
                     <Slider {...collectionProducts}  >
                       {products.map((product, i) => (
-                        <ProductDealCard key={i} data={product} />
+                        <div  key={i} className=" md:px-15 ">
+                          <ProductDealCard  data={product} />
+                        </div>
+  
                       )) }
                     </Slider>
                   </div>
@@ -253,19 +306,19 @@ const Home = () => {
           </Container>
         </section>
 
-        <section className='mt-[160px]'>
+        <section className='mt-[90px] lg:mt-[160px]'>
           <Row >
             <Col lg={6}>
-              <div className="px-16 flex flex-col py-10">
+              <div className="px-[50px] lg:px-16 flex flex-col py-10">
                 <div>
                   <div className="mb-[50px] ">
                     <Title text={arrival.tile} image={arrival.image} />
                   </div>
                   <Row>
-                      <Col lg={6}>
+                      <Col sm={12} md={6} lg={6}>
                         <CardNews />
                       </Col>
-                      <Col lg={6}>
+                      <Col sm={12} md={6} lg={6}>
                         <CardNews />
                       </Col>
                   </Row>
@@ -285,16 +338,18 @@ const Home = () => {
 
             </Col>
 
-            <Col lg={6}>
-                <div className="h-full">
+            <Col lg={6} className="mt-28 md:mt-40 lg:mt-0">
+                <div className="h-full ">
                   <Banner containerStyle='h-full'>
-                      <div className='p-[240px_100px_140px_100px] bg-[#f7f7f7] bg-no-repeat relative h-full' >
+                      <div className='p-[140px_100px_140px_100px] md:p-[240px_100px_140px_100px] bg-[#f7f7f7] bg-no-repeat relative h-full' >
                         <div className='absolute top-[-13%] bottom-0 right-0 z-0 bg-no-repeat inline-block' >
                           <img src={coupleCollectionBanner.image} alt=""  className='h-full'/>
                         </div>
-                        <div className="text-center h-full flex flex-col justify-center">
-                          <h1 className="text-[120px] uppercase font-bold text-white relative z-10">{coupleCollectionBanner.heading}</h1>
-                          <h1 className="font-dry-brush text-[100px] capitalize  !text-primary -mt-16 tracking-widest ml-[150px] relative z-10">{coupleCollectionBanner.tileContent}</h1>
+                        <div className="text-center h-full flex flex-col justify-center relative">
+                          <h1 className="text-6xl md:text-[120px] uppercase font-bold text-white relative z-10">{coupleCollectionBanner.heading}</h1>
+                          <h1 className="font-dry-brush hidden md:block  capitalize  !text-primary -mt-16 tracking-widest ml-[150px] text-[100px] relative z-10">{coupleCollectionBanner.tileContent}</h1>
+                          <h1 className="font-dry-brush block md:hidden absolute right-0 bottom-0 translate-x-1/2 translate-y-1/2 lg:hidden text-4xl capitalize  !text-primary -mt-16 tracking-widest ml-[150px] md:text-[100px]  z-10">{coupleCollectionBanner.tileContent}</h1>
+                          {/* font-dry-brush text-4xl capitalize absolute right-0 top-0 -translate-x-1/2 translate-y-full  !text-primary -mt-16 tracking-widest md:static md:translate-x-0  md:translate-y-0 */}
                         </div>
                       </div>
                   </Banner>

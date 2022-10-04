@@ -6,7 +6,7 @@ import { HeaderContext } from './Context'
 
 
 const Header = () => {
-  const [activeNav, setActiveNav] = useState()
+  const [activeNav, setActiveNav] = useState(false)
 
   const hanlePupopNav = () => {
     setActiveNav(pre => !pre)

@@ -46,15 +46,17 @@ const categories = [
 ];
 
 
-const SearchBox = () => {
+const SearchBox = ({responsive}) => {
   const [category, setCategory] = useState(categories[0].name);
 
   const handleOnClick = (item) => {
     setCategory(item.name);
   };
 
+  console.log(responsive)
+
   return (
-    <form className=" items-center relative leading-[2.692] !px-4 border border-b-1 rounded-xl w-[414px]  hidden md:flex md:justify-center lg:flex  ">
+    <form className={`items-center relative leading-[2.692] !px-4 border border-b-1 rounded-xl w-[414px]  hidden ${responsive ? responsive : ''}`}>
       <div className="">
         <Dropdown
           renderBody={() => renderBody(categories, handleOnClick)}

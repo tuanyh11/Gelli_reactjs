@@ -104,7 +104,7 @@ const renderHeader = (value, page, location) => (
   >
     {value}
   </NavLink>
-  <div className="p-2 s">
+  <div className="p-2 " id="angle-down" >
     <FaAngleDown className="ml-2" />
   </div>
 </div>
@@ -119,7 +119,11 @@ const renderBody = (items, handleOnClick) => {
           className="capitalize font-medium default-transition px-4 text-[#444444] hover:!text-primary cursor-pointer text-sm py-2 "
           key={item.id}
         >
-          {item.name}
+          <NavLink
+            to={`/shop/${item.name}`}
+          >
+            {item.name}
+          </NavLink>
         </li>
       ))}
     </ul>
@@ -129,28 +133,35 @@ const renderBody = (items, handleOnClick) => {
 
 
 const Nav = () => {
-  const [category, setCategory] = useState("Categories");
-  const [isOffLayer, setIsOffLayer] = useState(true);
-  const [activeNav, setActiveNav] = useHeaderContext();
+  const [category, setCategory] = useState("Categories")
+  const [isOffLayer, setIsOffLayer] = useState(false)
+  const [activeNav, setActiveNav] = useHeaderContext()
   const handleOnClick = (item) => {
     setCategory(item.name);
   };
 
-  const navRef = useRef();
-  const timeRef = useRef();
+  const navRef = useRef()
+  const timeRef = useRef()
 
-  const location = useLocation();
+  const location = useLocation()
+
+  const handleHiddenSidebar = () => {
+    timeRef.current = setTimeout(() => {
+      setActiveNav(pre => !pre)
+    }, 300);
+    navRef.current.classList.remove('active')
+  }
+
 
   useEffect(() => {
     const handleDectection = (e) => {
         if(!navRef.current.contains(e.target)) {
-          
           navRef.current.classList.remove('active')
           handleHiddenSidebar()
         }
     }
 
-    if(navRef.current ) {
+    if(navRef.current) {
       var timeId = setTimeout(() => {
         navRef.current.classList.toggle('active')
       })
@@ -161,19 +172,20 @@ const Nav = () => {
     clearTimeout(timeId)
     window.removeEventListener('mousedown',  handleDectection)
    }
-  }, [activeNav, navRef, setActiveNav])
 
-  const handleHiddenSidebar = () => {
-      timeRef.current = setTimeout(() => setActiveNav(pre => !pre), 300);
-      navRef.current.classList.remove('active')
-  }
+  }, [activeNav, navRef])
+  
+  useEffect(() => {
+    if(activeNav) {
+      handleHiddenSidebar()
+    }
+  }, [location.pathname])
 
   useEffect(() => {
     return () => {
       clearTimeout(timeRef.current)
     }
   }, [timeRef.current])
-
 
   return (
     <>
@@ -220,20 +232,20 @@ const Nav = () => {
         </Container>
       </div>
   
-    {/* pc tablet md */}
-      {activeNav && isOffLayer && (
+    {/* pc tablet md mobile*/}
+      {activeNav && (
         <OffLayer>
           <div
             ref={navRef}
             className="absolute top-0 w-[80%] bottom-0 left-0 right-0 bg-[#ffffff]   ease-linear transition-all duration-300 sidebar "
           >
             <div className="">
-              <div className="flex justify-center py-6 pl-5 pr-12">
+              <div className="flex justify-center py-6 pl-5 pr-12 lg:flex'">
                 <Logo />
               </div>
 
-              <div className="flex mt-10 justify-center">
-                <SearchBox/>
+              <div className="flex mt-10 justify-center ">
+                <SearchBox responsive={' md:flex lg:flex'}/>
               </div>
 
               <ul className="pt-10 !px-5">
@@ -258,6 +270,7 @@ const Nav = () => {
                   return (
                     <li key={page.id}>
                       <NavLink
+                        onClick={() => setIsOffLayer(!isOffLayer)}
                         to={`/${page.path}`}
                         className={({ isActive }) =>
                           `${
@@ -272,6 +285,15 @@ const Nav = () => {
                     </li>
                   );
                 })}
+              </ul>
+
+                          {/* social  */}
+              <ul className="flex items-center justify-center mt-10 lg:!pt-0">
+                {social.map((item) => (
+                  <li key={item.id} className="px-[14px]">
+                    <a href={item.url}>{item.icon}</a>
+                  </li>
+                ))}
               </ul>
             </div>
             <button

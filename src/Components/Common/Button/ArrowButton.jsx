@@ -2,7 +2,7 @@ import React from 'react'
 import { FaShoppingCart } from 'react-icons/fa'
 import DiamondButton from './DiamondButton'
 
-const ArrowButton = () => {
+const ArrowButton = ({textStyle}) => {
     return (
         <div>
             <div className="flex  relative cursor-pointer">
@@ -14,7 +14,7 @@ const ArrowButton = () => {
                         {<FaShoppingCart className="!text-primary " />}
                     </DiamondButton>
                 </div>
-                <div className="flex items-center justify-center ml-4  py-[11px] uppercase !bg-primary rounded-md pl-9 pr-3 text-white">Add to cart</div>
+                <div className={`flex items-center justify-center ml-4  py-[11px] uppercase !bg-primary rounded-md pl-9 pr-3 text-white ${textStyle}`}>Add to cart</div>
             </div>
         </div>
     )

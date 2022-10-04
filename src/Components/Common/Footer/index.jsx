@@ -67,7 +67,7 @@ const GetTemplateSection = ({ type: section }) => {
         return (
           <div className="mt-8">
             {section?.text_link && (
-              <div className="grid grid-cols-3 ">
+              <div className="grid grid-cols-3 md:grid-cols-2">
                 {section.text_link && autoDevisionCol()}
               </div>
             )}
@@ -81,7 +81,7 @@ const GetTemplateSection = ({ type: section }) => {
             )}
             {section?.input.map((item, i) => (
               <div key={i} className="mt-6">
-                <input type="text" className="bg-white border outline-none p-[15px_20px] w-[70%]" placeholder={item.placeholder}  />
+                <input type="text" className="bg-white border outline-none p-[15px_20px] w-[70%] md:w-[60%]" placeholder={item.placeholder}  />
               </div>
             ))}
             {section.socialMedial && 
@@ -94,7 +94,7 @@ const GetTemplateSection = ({ type: section }) => {
                   </li>
                 ))}
               </ul>
-            }
+            } 
           </div>
         );
       default:
@@ -104,10 +104,10 @@ const GetTemplateSection = ({ type: section }) => {
 
 const Footer = () => {
   return (
-    <div className="bg-gray-light">
+    <div className="md:py-5">
       <Row>
         {footer_layout.map((item, i) => (
-          <Col key={i} className="mt-0">
+          <Col key={i} md={12} lg={3} className="mt-0 bg-gray-light ">
             <div className="bg-no-repeat bg-right h-full p-[30px] " style={{ backgroundImage: `url(${item.image.url})` }}>
               {item.section.map((section, i) => (
                 <div key={i} >

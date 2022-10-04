@@ -54,6 +54,10 @@
   .sidebar.active {
     @apply translate-x-0
   }
+
+  .footer_logo-text span {
+    @apply ml-8 lg:ml-0
+  }
 }
 
 
@@ -67,6 +71,7 @@
 .g-15, .gx-15 {
   --bs-gutter-x: 1.875rem;
 }
+
 
 
 body {

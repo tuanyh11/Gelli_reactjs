@@ -1,9 +1,11 @@
 import React from "react";
 import { FaComment, FaFacebookF, FaGoogle, FaTwitch, FaUser, FaWeibo } from "react-icons/fa";
+import { Link } from "react-router-dom";
 import DiamondButton from "../../Common/Button/DiamondButton";
 import RectangleButton from "../../Common/Button/RectangleButton";
 
-const Blog = ({ blog, offTag }) => {
+const Blog = ({ blog, offTag, showReadMore, limitText, limit = 200 }) => {
+  const text = limitText ? blog.content.substring(0, limit) + '...' : blog.content
   return (
     <div>
       <div
@@ -40,10 +42,14 @@ const Blog = ({ blog, offTag }) => {
         <h1 className="py-7 text-2xl normal-case">{blog.title}</h1>
         <div className="text-sm mb-7">
           <p className="">
-            {blog.content}
+            {text}
           </p>
         </div>
-        <RectangleButton text={"read more"} />
+        {showReadMore && 
+          <Link to={"/blog/1"}>
+            <RectangleButton text={"read more"} />
+          </Link>
+        }
       </div>
 
       {!offTag && 

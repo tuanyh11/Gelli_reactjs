@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { FaAngleDown, FaBars, FaBuromobelexperte, FaShoppingCart, FaStar } from 'react-icons/fa'
 import { Col, Row } from 'reactstrap'
-import { CardProductAct, DefaultProCard, DiamondButton } from '../Components'
+import { CardProductAct, CardProductList, DefaultProCard, DiamondButton } from '../Components'
 import Dropdown from '../Components/UI/Dropdown'
 import { products } from '../Fakedata/products'
 
@@ -152,7 +152,8 @@ const Shop = () => {
 
   return (
     <div className='relative'>
-       <div className='flex'>
+      {/* tablet pc */}
+       <div className='md:flex hidden'>
           <button className='relative'>
             <Dropdown
             renderHeader={() => renderHeaderSort(action.sort)}
@@ -171,6 +172,29 @@ const Shop = () => {
             />
           </button>
        </div>
+       {/* end tablet pc */}
+
+      {/* mobile */}
+       <Row className='md:hidden'>
+          <Col sm={12} className='relative'>
+            <Dropdown
+            renderHeader={() => renderHeaderSort(action.sort)}
+            renderBody={() => renderBodySort(sortType, handleSetActions, sortType.findIndex(item => item.name === action.sort))}
+            />
+          </Col>
+          <Col sm={12} className='relative'>
+            <Dropdown
+            renderHeader={() => renderHeaderShow(action.show)}
+            renderBody={() => renderBodyShow(showOptions, handleSetActions, showOptions.findIndex(item => item === action.show))}
+            />
+          </Col>
+          <Col md={12} className='relative ml-auto'>
+            <Dropdown
+            renderHeader={() => renderHeaderView(views, handleSetActions, views.findIndex(item => item.id === action.viewAs))}
+            />
+          </Col>
+       </Row>
+       {/* end mobile */}
 
        <div className="mt-[50px] font-medium">
         <Row className=''>
@@ -182,65 +206,8 @@ const Shop = () => {
               <DefaultProCard data={product} adapteHeightTop={false} adapteHeightBottom={false} /> 
             </Col>
              : 
-            <Col key={index} lg={12} >
-              <Row className="flex">
-                <Col lg={4} >
-                  <div className="border !border-primary h-full flex items-center justify-center">
-                    <img src={product.image} alt="" className='w-[160px] h-[160px]' />
-                  </div>
-                </Col>
-                <Col lg={8} className="">
-                  <h1 className="text-base font-medium mb-2">{product.name}</h1>
-
-                  {/* review  */}
-                  <div className="flex items-center text-sm  mb-2">
-                    <ul className="flex">
-                      <li className="">
-                        <FaStar/>
-                      </li>
-                      <li className="">
-                        <FaStar/>
-                      </li>
-                      <li className="">
-                        <FaStar/>
-                      </li>
-                      <li className="">
-                        <FaStar/>
-                      </li>
-                      <li className="">
-                        <FaStar/>
-                      </li>
-                    </ul>
-                    <p className='leading-1 -mb-[1px] ml-3'>1 review</p>
-                  </div>
-                
-                  <div className="text-2xl !text-primary mb-6">
-                    {product.price}
-                  </div>
-                  {/* descriptiom */}
-                  <div className="">
-                    <p className='text-sm text-gray-5 '>{product.description}</p>
-                  </div>
-
-                  <div className="flex items-center justify-between">
-                    <div className="flex  relative cursor-pointer">
-                      <div className='absolute top-1 bottom-0 left-0'>
-                        <DiamondButton
-                        containerButton=" group !border-none"
-                        button="!border-primary border p-2 bg-white  group-hover:!scale-[1.0] group-hover:!bg-white  origin-center"
-                        >
-                          {<FaShoppingCart className="!text-primary " />}
-                        </DiamondButton>
-                      </div>
-                      <div className="flex items-center justify-center ml-4  py-[11px] uppercase !bg-primary rounded-md pl-9 pr-3 text-white">Add to cart</div>
-                    </div>
-
-                    <div className="left-auto">
-                      <CardProductAct/>
-                    </div>
-                  </div>
-                </Col>
-              </Row>
+            <Col key={index} lg={12} className="mt-14 first:mt-0 md:first:mt-14" >
+              <CardProductList data={product}/>
             </Col>
           )}
         </Row>

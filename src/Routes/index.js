@@ -25,6 +25,14 @@ export const routes = [
         }
     },
     {
+        path: "/shop/:id",
+        element: Shop,
+        layout: LayoutWithSideBar,
+        layoutProps: {
+            SideBarElement: ShopSideBar,
+        }
+    },
+    {
         path: "/product/:id",
         element: ProductDetail,
         layout: LayoutWithSideBar,

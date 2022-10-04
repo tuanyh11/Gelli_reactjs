@@ -38,3 +38,6 @@ export {default as BlogSideBar} from './Common/SideBar/BlogSideBar'
 // blog 
 
 export {default as CardBlog} from './UI/Blog/index'
+
+// cart 
+export {default as CartItem} from './UI/Cart/CartItem'

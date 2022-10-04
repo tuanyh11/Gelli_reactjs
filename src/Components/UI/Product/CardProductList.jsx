@@ -6,14 +6,17 @@ import ArrowButton from './../../Common/Button/ArrowButton';
 
 const CardProductList = ({ data }) => {
     return (
-        <div>
+        <div className=' px-2 py-10 md:border-none md:px-0 md:py-0 md:border-transparent'>
             <Row className="flex">
-                <Col lg={4} >
-                    <div className="border !border-primary h-full flex items-center justify-center">
-                        <img src={data.image} alt="" className='w-[160px] h-[160px]' />
+                <Col md={5} lg={5} >
+                    <div className="border  !border-primary h-full !px-5 py-6 md:flex items-center justify-center">
+                            <img src={data.image} alt="" className='w-[160px] h-[160px] ml-auto mr-auto' />
                     </div>
+                    {/* <div className=" h-full !px-5 py-6 flex items-center justify-center">
+                        <img src={data.image} alt="" className='w-[160px] h-[160px]' />
+                    </div> */}
                 </Col>
-                <Col lg={8} className="">
+                <Col md={7} lg={7} className="">
                     <h1 className="text-base font-medium mb-2">{data.name}</h1>
 
                     {/* review  */}
@@ -38,17 +41,22 @@ const CardProductList = ({ data }) => {
                         <p className='leading-1 -mb-[1px] ml-3'>1 review</p>
                     </div>
 
-                    <div className="text-2xl !text-primary mb-6">
+                    <div className="text-2xl !text-primary md:mb-6 mb-2">
                         {data.price}
                     </div>
+                    <div className=" flex md:hidden items-center justify-between !mb-2">
+                        <div className="md:left-auto">
+                            <CardProductAct />
+                        </div>
+                    </div>
                     {/* descriptiom */}
-                    <div className="">
-                        <p className='text-sm text-gray-5 '>{data.description}</p>
+                    <div className="mb-7">
+                        <p className='text-xs normal-case leading-5 text-gray-5 font-normal  '>{data.description}</p>
                     </div>
 
-                    <div className="flex items-center justify-between">
-                        <ArrowButton/>
-                        <div className="left-auto">
+                    <div className="md:flex items-center justify-between ">
+                        <ArrowButton />
+                        <div className="hidden  md:left-auto">
                             <CardProductAct />
                         </div>
                     </div>

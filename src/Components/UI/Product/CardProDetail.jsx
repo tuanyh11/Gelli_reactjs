@@ -73,6 +73,23 @@ const settings = {
       </DiamondButton>
     </Arrow>
   ),
+  responsive: [
+    {
+      breakpoint: 768,
+      settings: {
+        slidesToShow: 4,
+        slidesToScroll: 2,
+        initialSlide: 2
+      }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 1
+      }
+    }
+  ]
 };
 
 const CardProDetail = ({product}) => {
@@ -82,12 +99,12 @@ const CardProDetail = ({product}) => {
   return (
     <div>
       <Row>
-        <Col lg={6}>
-          <div>
+        <Col md={12} lg={6}>
+          <div className="p-2 border-2">
             <img
               src={imageProduct}
               alt=""
-              className="w-[410px] h-[370px] border"
+              className=" w-full h-full lg:w-[410px] lg:h-[370px] "
             />
           </div>
           <Slider {...settings} className="mt-[30px] pl-[21px] pr-6">
@@ -178,14 +195,29 @@ const CardProDetail = ({product}) => {
               </div>
             </div>
 
-            <div className="flex items-center justify-between ">
+          {/* pc  */}
+            <div className="hidden lg:flex items-center justify-between ">
               <ArrowButton />
               <div className="left-auto">
                 <CardProductAct />
               </div>
             </div>
+            {/* end pc */}
 
-            <div className="flex items-center mt-4">
+            {/* tablet mobile */}
+
+            <Row className="flex lg:hidden items-center justify-between ">
+              <Col lg={12} className="left-auto">
+                <CardProductAct boxButtonStyle={"flex items-center justify-start"}/>
+              </Col>
+              <Col lg={12}>
+                <ArrowButton textStyle={"w-full"} />
+              </Col >
+            </Row>
+            {/* end tablet mobile */}
+
+
+            <div className="flex items-center lg:mt-4 mt-8">
               <h1 className="uppercase text-13">share via</h1>
               <ul className="flex items-center ml-4">
                 <li className="">

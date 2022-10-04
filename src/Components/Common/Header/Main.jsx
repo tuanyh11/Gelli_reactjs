@@ -15,11 +15,11 @@ const Main = () => {
     <div className="py-9 border-b border-c-2">
       <Container>
         <div className="flex items-center justify-between">
-          <Bars className={" block lg:block"} />
+          <Bars className={" block lg:hidden"} />
           <Logo />
-          <SearchBox/>
+          <SearchBox responsive={'md:hidden lg:flex'}/>
 
-          <div className="flex items-center">
+          <Link to="/cart" className="flex items-center">
             <div className="cursor-pointer relative p-2">
               <FaShoppingBasket className="text-[33px] text-dark " />
               <div className="absolute top-1 -right-2 text-white min-w-[18px] text-xs font-medium flex justify-center h-[18px] leading-[18px] text-center  !bg-primary rounded-[50%]">
@@ -34,7 +34,7 @@ const Main = () => {
               <p className="normal-case text-xs">5 Item(s)</p>
               <span className="!text-primary text-base">$12500</span>
             </div>
-          </div>
+          </Link>
         </div>
       </Container>
     </div>

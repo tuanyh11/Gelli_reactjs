@@ -46,7 +46,7 @@ const Blog = () => {
       <div className="">
         {blogs.slice(0, 3).map((i, index) => 
           <div key={index} className="mb-[60px]">
-            <CardBlog blog={blog} offTag={true}/>
+            <CardBlog blog={blog} offTag={true} showReadMore={true} limitText={true} limit={300}/>
           </div>
         )}
       </div>
