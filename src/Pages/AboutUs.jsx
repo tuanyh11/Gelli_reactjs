@@ -133,8 +133,8 @@ const AboutUs = () => {
                 <div className="relative group">
                   <div className="relative z-10">
                     <img
-                      src={member_1}
-                      alt=""
+                      src={member_1} 
+                      alt="" 
                       className="w-full h-[355px] border-1 border-c-1  group-hover:border-[3px] group-hover:!border-primary"
                     />
                   </div>
