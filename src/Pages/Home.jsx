@@ -1,7 +1,7 @@
 import React from 'react'
 import Slider from 'react-slick'
 import { Col, Container, Row } from 'reactstrap'
-import { Banner, DefaultProCard, DiamondButton, CateBanner, Title, ProductDealCard, CardTestimon, CardNews, Policy, Brand } from '../Components'
+import { Banner, DefaultProCard, DiamondButton, CateBanner, Title, ProductDealCard, CardTestimon, CardNews } from '../Components'
 import { banners, cateBanners } from '../Fakedata/uiData' 
 import home_title_image_1 from '../Fakedata/images/home-title-img-1.png'
 import { products } from '../Fakedata/products'

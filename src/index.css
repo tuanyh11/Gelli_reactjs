@@ -121,7 +121,7 @@ body {
 
 
 .border-boder-white:hover {
-  border-color: rgb(79, 79, 79);
+  border-color: rgb(79, 79, 79) ;
 }
 
 
@@ -143,6 +143,10 @@ body {
 
 .container-dots.container-dots-testimonial {
   transform: translate(60%, -40px);
+}
+
+.container-dots.dots-testimonial-aboutus {
+  transform: translate(-50%, 30px);
 }
 
 .container-dots li {

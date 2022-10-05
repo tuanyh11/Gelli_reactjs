@@ -104,10 +104,10 @@ const GetTemplateSection = ({ type: section }) => {
 
 const Footer = () => {
   return (
-    <div className="md:py-5">
+    <div className="md:py-5 bg-gray-light">
       <Row>
         {footer_layout.map((item, i) => (
-          <Col key={i} md={12} lg={3} className="mt-0 bg-gray-light ">
+          <Col key={i} md={12} lg={3} className="mt-0  ">
             <div className="bg-no-repeat bg-right h-full p-[30px] " style={{ backgroundImage: `url(${item.image.url})` }}>
               {item.section.map((section, i) => (
                 <div key={i} >
