@@ -61,7 +61,7 @@ const pages = [
   {
     id: Math.random().toString(36).substr(2, 9),
     name: "contact us",
-    path: "contact_us",
+    path: "contactus",
   },
 ];
 
@@ -214,7 +214,7 @@ const Nav = () => {
                     className="uppercase px-[14px] text-13 font-bold "
                     key={item.id}
                   >
-                    <NavLink to={"/"}>{item.name}</NavLink>
+                    <NavLink to={`/${item.path}`}>{item.name}</NavLink>
                   </li>
                 );
               })}

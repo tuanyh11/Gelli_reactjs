@@ -102,8 +102,7 @@ const Home = () => {
         settings: {
           slidesToShow: 3,
           slidesToScroll: 3,
-          infinite: true,
-          dots: true
+          infinite: true
         }
       },
       {
@@ -124,17 +123,81 @@ const Home = () => {
     ]
   }
 
-  const collectionProducts = {
-    dots: true,
+
+  const bestSellingProducts = {
+    dots: false,
     infinite: true,
     speed: 500,
-    slidesToShow: 3,
+    slidesToShow: 2,
     slidesToScroll: 1,
     appendDots: dots => <ul >{dots}</ul>,
     dotsClass:"container-dots ",
     nextArrow: <Arrow classContainer="absolute !translate-y-[-140%] z-[99999999999]  bg-transparent absolute top-1/2 p-2 left-[10px] lg:left-[-30px] cursor-pointer"><FaAngleLeft className=' w-6 h-6'/></Arrow>,
     prevArrow: <Arrow classContainer="absolute !translate-y-[-140%] z-[99999999999] bg-transparent absolute top-1/2 p-2 right-[10px]  lg:right-[-30px] cursor-pointer"><FaAngleRight className="w-6 h-6" /></Arrow>,
     responsive: [
+      {
+        breakpoint: 	1280,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: true
+        }
+      },
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: true
+        }
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          initialSlide: 2
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }
+    ],
+    customPaging(i) {
+      return (
+        <div className='translate-y-[20px]'>
+          <DiamondButton containerButton='w-full h-full transition border-transparent hover:!border-primary container-button-second !p-[2px] ' button='!bg-gray-bold p-[4px] group-hover:!bg-primary'/>
+        </div>
+      )
+    }
+  }
+
+  const collectionProducts = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    appendDots: dots => <ul >{dots}</ul>,
+    dotsClass:"container-dots ",
+    nextArrow: <Arrow classContainer="absolute !translate-y-[-140%] z-[99999999999]  bg-transparent absolute top-1/2 p-2 left-[10px] lg:left-[-30px] cursor-pointer"><FaAngleLeft className=' w-6 h-6'/></Arrow>,
+    prevArrow: <Arrow classContainer="absolute !translate-y-[-140%] z-[99999999999] bg-transparent absolute top-1/2 p-2 right-[10px]  lg:right-[-30px] cursor-pointer"><FaAngleRight className="w-6 h-6" /></Arrow>,
+    responsive: [
+      {
+        breakpoint: 1536,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: true
+        }
+      },
       {
         breakpoint: 1024,
         settings: {
@@ -180,7 +243,7 @@ const Home = () => {
 
     customPaging(i) {
       return (
-        <div className='translate-y-[30px] '>
+        <div className=''>
           <DiamondButton containerButton='w-full h-full transition border-transparent hover:!border-primary container-button-second !p-[2px] ' button='!bg-gray-bold p-[4px] group-hover:!bg-primary'/>
         </div>
       )
@@ -266,7 +329,7 @@ const Home = () => {
 
                     <div className="uppercase ">recent product</div>
                   </div>
-                  <Slider {...collectionProducts} >
+                  <Slider {...bestSellingProducts} >
                     {products.map((product, i) => (
                     <div  key={i} className=" md:px-15 ">
                       <DefaultProCard data={product} />

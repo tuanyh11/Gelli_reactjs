@@ -53,7 +53,7 @@ export const routes = [
     {
         path: "/blog/:id",
         element: BlogDetail,
-        layout: LayoutWithSideBar,
+        layout: LayoutWithSideBar ,
         layoutProps: {
             SideBarElement: BlogSideBar,
             offPolicyAndBrand: true

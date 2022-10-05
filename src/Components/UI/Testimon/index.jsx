@@ -5,9 +5,9 @@ const CardTestimon = ({data, vertical = true}) => {
   return (
     <div >
         <Row className='flex items-center'>
-            <Col lg={vertical ? 4 : 12}>
+            <Col lg={vertical ? 5 : 12}>
                 <div className="flex items-center">
-                    <div className=" p-1">
+                    <div className=" p-1 shrink-0">
                         <img src={data.avatar} alt="" className='w-[120px] h-[120px] mx-auto object-cover  rounded-full border-4 border-solid !border-primary' />
                     </div> 
                         <div className="ml-4 ">
@@ -17,7 +17,7 @@ const CardTestimon = ({data, vertical = true}) => {
                 </div>
             </Col>
 
-            <Col lg={vertical ? 8 : 12}>
+            <Col lg={vertical ? 7 : 12}>
                 <div >
                     <p className='text-sm font-lato text-gray-2'>{data.content}</p>
                 </div>

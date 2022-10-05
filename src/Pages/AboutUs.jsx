@@ -1,13 +1,13 @@
 import React from "react";
 import { Col, Container, Row } from "reactstrap";
-import { Banner, CardTestimon, DiamondButton, Title } from "../Components";
+import { Arrow, Banner, CardTestimon, DiamondButton, Title } from "../Components";
 import slider_aboutus from "../Fakedata/images/silder-aboutus-1.png";
 import home_title_image_1 from "../Fakedata/images/home-title-img-1.png";
 import member_1 from "../Fakedata/images/ourteam-1.png";
 import daily_title_image_1 from "../Fakedata/images/VectorSmartObject13.png";
 import Slider from "react-slick";
 import user_image from "../Fakedata/images/Layer35.png";
-import { FaFacebookF, FaGlobe, FaGoogle, FaTwitter } from "react-icons/fa";
+import { FaAngleLeft, FaAngleRight, FaFacebookF, FaGlobe, FaGoogle, FaTwitter } from "react-icons/fa";
 
 const testimonialSettings = {
   dots: true,
@@ -29,6 +29,42 @@ const testimonialSettings = {
     );
   },
 };
+
+const ourteamSetting = {
+  dots: true,
+  infinite: true,
+  speed: 500,
+  slidesToShow: 4,
+  slidesToScroll: 1,
+  
+  responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        infinite: true,
+        dots: true
+      }
+    },
+    {
+      breakpoint: 768,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 2,
+        initialSlide: 2
+      }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1
+      }
+    }
+  ],
+
+}
 
 const testimonials = [
   {
@@ -91,32 +127,31 @@ const AboutUs = () => {
         <div lg={12} className="mb-12">
           <Title text={"Our team"} image={home_title_image_1} />
         </div>
-        <Row>
+        <Slider {...ourteamSetting} className="mx-[-15px]">
           {[...new Array(4).keys()].map((item, i) => (
-            <Col key={i}>
-              <div className="">
+              <div key={i} className="px-[15px] ">
                 <div className="relative group">
                   <div className="relative z-10">
                     <img
                       src={member_1}
                       alt=""
-                      className="w-[260px] h-[355px] border-1 border-c-1  group-hover:border-[3px] group-hover:!border-primary"
+                      className="w-full h-[355px] border-1 border-c-1  group-hover:border-[3px] group-hover:!border-primary"
                     />
                   </div>
                   <div className="after:content-['']  after:absolute after:top-0 after:bottom-0 after:left-0 after:right-0 after:!bg-primary after:flex after:justify-center after:opacity-[0.325] after:z-0 group-hover:after:z-[99999] after:transition-all">
                       <div className="absolute bottom-0 left-0 right-0 top-0 z-1 group-hover:z-[999999999] flex-col flex items-center justify-center">
                         <h2 className="text-xl font-normal normal-case !mb-5  !text-white opacity-100">Let's connect guys</h2>
                         <ul className="flex items-center w-full justify-center">
-                          <li className="text-2xl text-white">
-                            <FaFacebookF className=" mr-8 cursor-pointer  " />
+                          <li className="text-2xl mr-8 text-white relative after:content-[''] after:absolute after:-bottom-1/2 after:left-0 after:w-0 after:transition-[width] after:duration-500 hover:after:w-full after:h-[3px] after:bg-white ">
+                            <FaFacebookF className="  cursor-pointer  " />
                           </li>
-                          <li className="text-2xl text-white">
-                            <FaGoogle className=" mr-8 cursor-pointer  " />
+                          <li className="text-2xl mr-8 text-white relative after:content-[''] after:absolute after:-bottom-1/2 after:left-0 after:w-0 after:transition-[width] after:duration-500 hover:after:w-full after:h-[3px] after:bg-white ">
+                            <FaGoogle className="  cursor-pointer  " />
                           </li>
-                          <li className="text-2xl text-white">
-                            <FaTwitter className=" mr-8 cursor-pointer  " />
+                          <li className="text-2xl mr-8 text-white relative after:content-[''] after:absolute after:-bottom-1/2 after:left-0 after:w-0 after:transition-[width] after:duration-500 hover:after:w-full after:h-[3px] after:bg-white ">
+                            <FaTwitter className="  cursor-pointer  " />
                           </li>
-                          <li className="text-2xl text-white">
+                          <li className="text-2xl  text-white relative after:content-[''] after:absolute after:-bottom-1/2 after:left-0 after:w-0 after:transition-[width] after:duration-500 hover:after:w-full after:h-[3px] after:bg-white ">
                             <FaTwitter className=" cursor-pointer  " />
                           </li>
                         </ul>
@@ -129,9 +164,8 @@ const AboutUs = () => {
                   <p className="text-sm text-gray-600 uppercase">Leader</p>
                 </div>
               </div>
-            </Col>
           ))}
-        </Row>
+        </Slider>
 
         <Row className="item-center mt-14">
           <Col lg={6}>
