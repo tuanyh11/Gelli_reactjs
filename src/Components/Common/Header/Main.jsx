@@ -12,7 +12,7 @@ import SearchBox from "./SearchBox";
 const Main = () => {
 
   return (
-    <div className="py-9 border-b border-c-2">
+    <div className="py-9 border-b border-c-2 h-[120px] text-13">
       <Container>
         <div className="flex items-center justify-between">
           <Bars className={" block lg:hidden"} />
@@ -32,7 +32,7 @@ const Main = () => {
             <div className="w-[2px] h-[40px] mx-4 bg-b-1 ml-2 hidden lg:block"></div>
             <div className="text-13 hidden lg:block">
               <p className="normal-case text-xs">5 Item(s)</p>
-              <span className="!text-primary text-base">$12500</span>
+              <span className="!text-primary text-[15px] font-bold">$12500</span>
             </div>
           </Link>
         </div>

@@ -1,15 +1,18 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Logo = () => {
   return (
-    <div className="flex items-center">
-      <h1 className="text-5xl font-medium !text-primary font-alex-brush">
-        Gelli
-      </h1>
+    <Link to={'/'} className="flex items-center">
+      <div className="">
+        <h1 className="-translate-y-1/2 font-medium leading-[0.4] text-[110px] font-dragon  !text-primary ">
+            Gelli
+          </h1>
+      </div>
       <p className="ml-3 text-c-2 text-[13px] uppercase font-medium hidden lg:block">
         premium template
       </p>
-    </div>
+    </Link>
   );
 };
 

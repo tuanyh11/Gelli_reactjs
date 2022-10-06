@@ -17,7 +17,7 @@ const CardTestimon = ({data, vertical = true}) => {
                 </div>
             </Col>
 
-            <Col lg={vertical ? 7 : 12}>
+            <Col lg={vertical ? 7 : 12} className="mt-2">
                 <div >
                     <p className='text-sm font-lato text-gray-2'>{data.content}</p>
                 </div>

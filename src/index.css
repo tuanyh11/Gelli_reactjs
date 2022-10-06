@@ -246,7 +246,11 @@ body {
   pointer-events: auto;
 }
 
-/* row */
+/* css grid */
+
+.container {
+  padding: 0;
+}
 
 .row {
   --bs-gutter-x: 30px;

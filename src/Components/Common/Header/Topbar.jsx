@@ -13,7 +13,7 @@ const Topbar = () => {
       <Container className="h-full">
         <div className=" flex items-center justify-center lg:justify-between h-full">
           <div className="lg:flex items-center hidden">
-            <div className="flex items-center">
+            <div className="flex items-center ">
               <FaEnvelope className="mr-2"/>
               <p >youremail@gmail.com</p>
             </div>

@@ -56,12 +56,12 @@ const SearchBox = ({responsive}) => {
   console.log(responsive)
 
   return (
-    <form className={`items-center relative leading-[2.692] !px-4 border border-b-1 rounded-xl w-[414px]  hidden ${responsive ? responsive : ''}`}>
+    <form className={`items-center relative h-[45px] leading-[2.692] !px-4 border border-b-1 rounded-xl w-[414px]  hidden ${responsive ? responsive : ''}`}>
       <div className="">
         <Dropdown
           renderBody={() => renderBody(categories, handleOnClick)}
           value={category}
-          style={{ text: "w-[100px] limit" }}
+          style={{ text: "w-[100px] limit !text-primary" }}
           
         />
       </div>

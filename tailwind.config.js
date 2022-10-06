@@ -27,7 +27,7 @@ module.exports = {
           200: "#e5e5e5",
           300: "#d8d8d8",
           400: "#cbcbcb",
-          500: "#bebebe",
+          500: "#ebebeb",
           600: "#989898",
           700: "#727272",
           800: "#4c4c4c",
@@ -52,7 +52,7 @@ module.exports = {
         'dragon': 'Dragon is Coming, sans-serif',
         'alex-brush': 'Alex Brush, cursive',
         'greatVibes': 'Great Vibes, cursive',
-        'dry-brush': "'Dry Brush', sans-seri",
+        'dry-brush': "Simple Dry Brush, sans-seri",
         'lato': 'Lato, sans-serif'
       },
       borderWidth:{
@@ -60,6 +60,9 @@ module.exports = {
       },
       lineHeight: {
         '1': '1',
+      }, 
+      margin:{
+        '1.5': '15px'
       }
     }
   },

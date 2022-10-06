@@ -48,7 +48,7 @@ const Dropdown = ({
       )}
       <div
         ref={contentRef}
-        className={`z-[999999] absolute default-transition  opacity-0 left-0 right-0 bg-white top-[120%] shadow-lg pointer-events-none`}
+        className={`z-[999999] rounded-md absolute default-transition  opacity-0 left-0 right-0 bg-white top-[120%] shadow-lg pointer-events-none`}
       >
         {renderBody && renderBody()}
       </div>

@@ -116,7 +116,7 @@ const PolicyAndBrand = ({offPolicy, offBrand}) => {
         </section>
         }
         
-        { !offBrand &&  <section className='mt-[100px]'>
+        { !offBrand &&  <section className='mt-[126px]'>
           <Row className="">
             <Col md={12} lg={3} className="bg-black-1 mt-0">
                 <div className="flex flex-col justify-center items-center py-16 h-full text-white ">

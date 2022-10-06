@@ -6,6 +6,10 @@
     pointer-events: none;
 }
 
+.defaultcard-product-addcart {
+    opacity: 0;
+    pointer-events: none;
+}
 
 .product-action-button {
     opacity: 0;
@@ -13,16 +17,20 @@
     transition: all ease 0.5s;
 }
 
-.product-action-addcart {
-    opacity: 0;
-    pointer-events: none;
-    transform: translate(-50%, 70%);
-    transition: all ease 0.5s;
+.card-product-content:hover .action-addcart-diamond {
+    background: #f28288!important;
 }
+
 .card-product-content:hover .product-action-addcart {
     pointer-events: auto;
     opacity: 1;
     transform: translate(-50%, 50%);
+    color: #f28288;
+}
+
+.card-product-content:hover .defaultcard-product-addcart {
+    pointer-events: auto;
+    opacity: 1;
 }
 
 .card-product-content:hover .product-content-actions {

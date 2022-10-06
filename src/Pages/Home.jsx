@@ -81,7 +81,7 @@ const Home = () => {
 
     customPaging(i) {
       return (
-        <div>
+        <div className='w-4 h-4'>
           <DiamondButton containerButton=' border-transparent hover:!border-white group w-full h-full' button='!bg-gray-bold p-[4px] group-hover:!bg-white scale-[1.1]'/>
         </div>
       )
@@ -179,26 +179,17 @@ const Home = () => {
     }
   }
 
-  const collectionProducts = {
+  const dailyDealSetting = {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 4,
+    slidesToShow: 3,
     slidesToScroll: 1,
     appendDots: dots => <ul >{dots}</ul>,
     dotsClass:"container-dots ",
     nextArrow: <Arrow classContainer="absolute !translate-y-[-140%] z-[99999999999]  bg-transparent absolute top-1/2 p-2 left-[10px] lg:left-[-30px] cursor-pointer"><FaAngleLeft className=' w-6 h-6'/></Arrow>,
     prevArrow: <Arrow classContainer="absolute !translate-y-[-140%] z-[99999999999] bg-transparent absolute top-1/2 p-2 right-[10px]  lg:right-[-30px] cursor-pointer"><FaAngleRight className="w-6 h-6" /></Arrow>,
     responsive: [
-      {
-        breakpoint: 1536,
-        settings: {
-          slidesToShow: 4,
-          slidesToScroll: 3,
-          infinite: true,
-          dots: true
-        }
-      },
       {
         breakpoint: 1024,
         settings: {
@@ -244,8 +235,8 @@ const Home = () => {
 
     customPaging(i) {
       return (
-        <div className=''>
-          <DiamondButton containerButton='w-full h-full transition border-transparent hover:!border-primary container-button-second !p-[2px] ' button='!bg-gray-bold p-[4px] group-hover:!bg-primary'/>
+        <div className='w-4 h-4'>
+          <DiamondButton containerButton='w-full h-full transition border-transparent hover:!border-primary container-button-second !p-[1px] ' button='!bg-gray-bold p-[4px] group-hover:!bg-primary'/>
         </div>
       )
     }
@@ -276,7 +267,7 @@ const Home = () => {
               <Title text={arrival.tile} image={arrival.image} />
             </div>
             <div>
-            <Slider {...productsArrival} adaptiveHeight="true" >
+            <Slider {...productsArrival} adaptiveHeight="true" className='-mx-1.5' >
               {products.map((product, i) => (
                 <div key={i} className="md:px-15">
                   <DefaultProCard  data={product} />
@@ -287,7 +278,7 @@ const Home = () => {
           </Container>
         </section>
         
-        <section>
+        <section className='!mt-5'>
             <Row>
               <Col sm={12} md={12} lg={12} xl={12}  xxl={6} >
                 <Banner >
@@ -344,7 +335,7 @@ const Home = () => {
 
                     <div className="uppercase ">recent product</div>
                   </div>
-                  <Slider {...bestSellingProducts} >
+                  <Slider {...bestSellingProducts} className="-mx-1.5" >
                     {products.map((product, i) => (
                     <div  key={i} className=" md:px-15 ">
                       <DefaultProCard data={product} />
@@ -356,7 +347,7 @@ const Home = () => {
             </Row>
         </section>
 
-        <section className='mt-[90px]'>
+        <section className='mt-[100px]'>
           <Container>
             <Row>
               <Col>
@@ -370,7 +361,7 @@ const Home = () => {
               </Col>
               <Col>
                   <div>
-                    <Slider {...collectionProducts}  >
+                    <Slider {...dailyDealSetting} className="-mx-1.5" >
                       {products.map((product, i) => (
                         <div  key={i} className=" md:px-15 ">
                           <ProductDealCard  data={product} />
@@ -384,7 +375,7 @@ const Home = () => {
           </Container>
         </section>
 
-        <section className='mt-[90px] lg:mt-[160px]'>
+        <section className='mt-[120px] mb-[100px]'>
           <Row >
             <Col lg={12} xl={6} className="mt-28 md:mt-40 xl:hidden">
                   <div className="h-full ">
@@ -435,11 +426,11 @@ const Home = () => {
             </Col>
 
             
-            <Col lg={12} xl={6} className="mt-28 md:mt-40 hidden xl:block">
+            <Col lg={12} xl={6} className="hidden xl:block">
                 <div className="h-full ">
                   <Banner containerStyle='h-full'>
-                      <div className='p-[140px_100px_140px_100px] md:p-[240px_100px_140px_100px] bg-[#f7f7f7] bg-no-repeat relative h-full' >
-                        <div className='absolute top-[-13%] bottom-0 right-0 z-0 bg-no-repeat inline-block' >
+                      <div className='  bg-[#f7f7f7] bg-no-repeat relative h-full' >
+                        <div className='absolute top-[-13%] bottom-0 right-0 translate-x-14 z-0 bg-no-repeat inline-block' >
                           <img src={coupleCollectionBanner.image} alt=""  className='h-full'/>
                         </div>
                         <div className="text-center h-full flex flex-col justify-center relative">
