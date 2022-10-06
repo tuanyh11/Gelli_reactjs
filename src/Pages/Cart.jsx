@@ -63,7 +63,7 @@ const Cart = () => {
                         {/* end mobile */}
 
                         {/* mobile */}
-                        <div className="mt-10 md:hidden">
+                        <div className="mt-10 lg:hidden">
                             <Row className=''>
                                 {products.map((product, index) => ( 
                                 <Col lg={12} key={index}>

@@ -1,6 +1,7 @@
 import homeBanner_1 from './images/home-banner-1.png'
 import homeBanner_2 from './images/home-banner-2.png'
 import home_title_image_1 from './images/home-title-img-1.png'
+import slider_img from './images/SLIDER.png'
 import payment_image_1 from './images/payment.png'
 import footer_img1 from './images/footer_img1.png'
 import footer_img2 from './images/footer_img2.png'
@@ -10,17 +11,17 @@ import { FaFacebookF, FaGoogle, FaJs, FaLinkedin, FaTwitter } from 'react-icons/
 
 export const banners = [
     {
-        image: 'https://media.istockphoto.com/photos/perfume-bottle-flat-lay-with-fragrance-ingredients-top-view-picture-id1324726060?b=1&k=20&m=1324726060&s=170667a&w=0&h=fYKuzxqeR_l9c54hetfsvBC8oL0_NWKHZO7JrtemOG4=',
+        image: slider_img,
         title: 'perfume',
         subtitle: 'Gelli'
     },
     {
-        image: 'https://media.istockphoto.com/photos/bottle-of-luxury-perfume-and-fresh-jasmine-flowers-on-beige-flat-lay-picture-id1326392724?b=1&k=20&m=1326392724&s=170667a&w=0&h=Qy-y5ajx18_gBOEWCkKlT5RlhW6Cp28MsA3BW3luv7Y=',
+        image: slider_img,
         title: 'perfume',
         subtitle: 'Gelli'
     },
     {
-        image: 'https://us.123rf.com/450wm/9dreamstudio/9dreamstudio1909/9dreamstudio190901996/129913212-perfume-and-roses-composition-on-pink-background-top-view-pattern-frame.jpg?ver=6',
+        image: slider_img,
         title: 'perfume',
         subtitle: 'Gelli'
     },

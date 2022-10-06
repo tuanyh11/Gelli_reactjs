@@ -128,8 +128,9 @@ const Home = () => {
     dots: false,
     infinite: true,
     speed: 500,
-    slidesToShow: 2,
+    slidesToShow: 3,
     slidesToScroll: 1,
+    initialSlide: 0,
     appendDots: dots => <ul >{dots}</ul>,
     dotsClass:"container-dots ",
     nextArrow: <Arrow classContainer="absolute !translate-y-[-140%] z-[99999999999]  bg-transparent absolute top-1/2 p-2 left-[10px] lg:left-[-30px] cursor-pointer"><FaAngleLeft className=' w-6 h-6'/></Arrow>,
@@ -147,8 +148,8 @@ const Home = () => {
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
+          slidesToShow: 2,
+          slidesToScroll: 2,
           infinite: true,
           dots: true
         }
@@ -288,21 +289,35 @@ const Home = () => {
         
         <section>
             <Row>
-              <Col sm={12} md={12} lg={6}>
+              <Col sm={12} md={12} lg={12} xl={12}  xxl={6} >
                 <Banner >
-                  <div className=' p-[80px_60px_140px_30px] md:p-[240px_100px_140px_100px] bg-[#f7f7f7] bg-no-repeat relative [background-position:30%_10%] md:[background-position:0%_10%]' style={{backgroundImage: `url(${collection.image})`}}>
-                    <div className=" text-start">
-                      <h1 className="text-6xl md:text-[120px] uppercase font-bold ">special</h1>
-                    </div>
-                    <div className="ml-0 md:mt-10 relative md:ml-[150px] ">
-                      <h2 className="font-dry-brush text-4xl capitalize absolute right-0 top-0 -translate-x-1/2 translate-y-full  !text-primary -mt-16 tracking-widest md:static md:translate-x-0 md:text-[100px] md:translate-y-0">Collections</h2>
-                      <p className='font-lato text-[15px] pt-[20px] '>{collection.description}</p>
+                  <div className=' pt-[680px] md:pt-[680px] bg-[#f7f7f7]  bg-no-repeat relative [background-position:35%_10%]  md:[background-position:0%_10%]' style={{backgroundImage: `url(${collection.image})`}}>
+                    <div className=" absolute top-1/2 lg:left-[100px] -translate-y-1/2 md:left-0  " >
+                     <div className="relative hidden lg:flex justify-center flex-col md:text-center lg:text-start">
+                        <h1 className="text-6xl md:text-[120px] uppercase font-bold ">special</h1>
+                        <div className="ml-0  lg:m-0  relative  lg:px-[140px] ">
+                          <div >
+                            <h2 className=" font-dry-brush text-4xl mb-4 capitalize  !text-primary leading-[1.6] -mt-16 tracking-widest md:static md:translate-x-0 md:text-[90px] md:translate-y-0 md:-mt-10 md:mb-3 md:leading-1">Collections</h2>
+                          </div>
+                          <p className='font-lato text-[15px] md:px-10'>{collection.description}</p>
+                        </div>
+                     </div>
+
+                     <div className="relative  lg:hidden flex justify-center flex-col text-center px-4">
+                        <h1 className="text-6xl md:text-[120px] uppercase font-bold ">special</h1>
+                        <div className="ml-0  lg:m-0  relative  lg:px-[140px] ">
+                          <div className="mt-12 mb-2">
+                            <h2 className=" font-dry-brush text-4xl md:text-6xl  capitalize  !text-primary leading-[1.6] -mt-16 tracking-widest  ">Collections</h2>
+                          </div>
+                          <p className='font-lato text-[15px] md:px-10'>{collection.description}</p>
+                        </div>
+                     </div>
                     </div>
                   </div>
                 </Banner>
               </Col>
-              <Col sm={12} md={12} lg={6}>
-                <div className="px-[12px] lg:pr-10 lg:pl-6 mt-[70px] md:!px-[35px] lg:mt-0">
+              <Col sm={12} md={12} lg={12} xl={12} xxl={6} >
+                <div className="px-[12px] lg:pr-10 lg:pl-6 mt-[70px] md:!px-[35px] xl:mt-0">
                   <div className="">
                     <Title text={bestSelling.tile} image={bestSelling.image} />
                   </div>
@@ -371,7 +386,25 @@ const Home = () => {
 
         <section className='mt-[90px] lg:mt-[160px]'>
           <Row >
-            <Col lg={6}>
+            <Col lg={12} xl={6} className="mt-28 md:mt-40 xl:hidden">
+                  <div className="h-full ">
+                    <Banner containerStyle='h-full'>
+                        <div className='p-[140px_100px_140px_100px] md:p-[240px_100px_140px_100px] bg-[#f7f7f7] bg-no-repeat relative h-full' >
+                          <div className='absolute top-[-13%] bottom-0 right-0 z-0 bg-no-repeat w-full inline-block' >
+                            <img src={coupleCollectionBanner.image} alt=""  className='h-full w-full bg-contain'/>
+                          </div>
+                          <div className="text-center h-full flex flex-col justify-center relative">
+                            <h1 className="text-6xl md:text-[120px] uppercase font-bold text-white relative z-10">{coupleCollectionBanner.heading}</h1>
+                            <h1 className="font-dry-brush hidden md:block  capitalize  !text-primary -mt-16 tracking-widest ml-[150px] text-[100px] relative z-10">{coupleCollectionBanner.tileContent}</h1>
+                            <h1 className="font-dry-brush block md:hidden absolute right-0 bottom-0 translate-x-1/2 translate-y-1/2 lg:hidden text-4xl capitalize  !text-primary -mt-16 tracking-widest ml-[150px] md:text-[100px]  z-10">{coupleCollectionBanner.tileContent}</h1>
+                            {/* font-dry-brush text-4xl capitalize absolute right-0 top-0 -translate-x-1/2 translate-y-full  !text-primary -mt-16 tracking-widest md:static md:translate-x-0  md:translate-y-0 */}
+                          </div>
+                        </div>
+                    </Banner>
+                  </div>
+            </Col>
+
+            <Col lg={12} xl={6}>
               <div className="px-[50px] lg:px-16 flex flex-col py-10">
                 <div>
                   <div className="mb-[50px] ">
@@ -401,7 +434,8 @@ const Home = () => {
 
             </Col>
 
-            <Col lg={6} className="mt-28 md:mt-40 lg:mt-0">
+            
+            <Col lg={12} xl={6} className="mt-28 md:mt-40 hidden xl:block">
                 <div className="h-full ">
                   <Banner containerStyle='h-full'>
                       <div className='p-[140px_100px_140px_100px] md:p-[240px_100px_140px_100px] bg-[#f7f7f7] bg-no-repeat relative h-full' >
