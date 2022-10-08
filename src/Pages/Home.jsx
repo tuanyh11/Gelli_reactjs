@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Slider from 'react-slick'
 import { Col, Container, Row } from 'reactstrap'
 import { Banner, DefaultProCard, DiamondButton, CateBanner, Title, ProductDealCard, CardTestimon, CardNews } from '../Components'
@@ -12,6 +12,8 @@ import daily_title_image_1 from '../Fakedata/images/VectorSmartObject13.png'
 import couple_image from '../Fakedata/images/Layer48.png'
 import user_image from '../Fakedata/images/Layer35.png'
 import { Link } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { productAtc } from '../Redux/Slice/productSlice'
 
 const arrival = {
   tile: 'new arrival',
@@ -69,6 +71,12 @@ const coupleCollectionBanner  = {
 }
 
 const Home = () => {
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(productAtc.setListProduct())
+  }, [])
+
   const sliderSettings = {
     dots: true,
     infinite: true,
@@ -81,7 +89,7 @@ const Home = () => {
 
     customPaging(i) {
       return (
-        <div className='w-4 h-4'>
+        <div className='w-4 h-4'  >
           <DiamondButton containerButton=' border-transparent hover:!border-white group w-full h-full' button='!bg-gray-bold p-[4px] group-hover:!bg-white scale-[1.1]'/>
         </div>
       )

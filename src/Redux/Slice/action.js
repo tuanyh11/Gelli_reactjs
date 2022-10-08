@@ -1,0 +1,1 @@
+export { productAtc } from "./productSlice"
