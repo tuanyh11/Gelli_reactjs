@@ -1,5 +1,7 @@
 import React, { useState } from "react";
+import { useEffect } from "react";
 import { FaSearch } from "react-icons/fa";
+import { connect } from "react-redux";
 import Dropdown from "../../UI/Dropdown";
 
 const renderBody = (items, handleOnClick) => {
@@ -46,14 +48,13 @@ const categories = [
 ];
 
 
-const SearchBox = ({responsive}) => {
-  const [category, setCategory] = useState(categories[0].name);
+const SearchBox = ({responsive, categories}) => {
+  const [category, setCategory] = useState('Categories');
 
   const handleOnClick = (item) => {
     setCategory(item.name);
   };
 
-  console.log(responsive)
 
   return (
     <form className={`items-center relative h-[45px] leading-[2.692] !px-4 border border-b-1 rounded-xl w-[414px]  hidden ${responsive ? responsive : ''}`}>
@@ -81,4 +82,11 @@ const SearchBox = ({responsive}) => {
   );
 };
 
-export default SearchBox;
+const mapStateToProps = (state, ownProps) => {
+  return ({
+    categories: state.ui.data?.categories ? state.ui.data?.categories : [],
+    ...ownProps
+  })
+}
+
+export default connect(mapStateToProps)(SearchBox);

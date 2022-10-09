@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Col, Container, Row } from 'reactstrap'
 import Slider from 'react-slick'
 import Policy from '../../UI/Policy'
@@ -7,6 +7,7 @@ import Arrow from '../../UI/Arrow'
 import DiamondButton from '../../Common/Button/DiamondButton'
 import { FaAngleLeft, FaAngleRight, FaGlobe } from 'react-icons/fa'
 import brand_1 from '../../../Fakedata/images/VectorSmartObject4.png'
+import { getAllBrand } from '../../../api'
 
 
 const policy = [
@@ -55,6 +56,22 @@ const policy = [
   ]
 
 const PolicyAndBrand = ({offPolicy, offBrand}) => {
+
+    const [error, setError] = useState('')
+
+    useEffect(() => {
+      if(!offBrand) {
+        (async () => {
+          try {
+            const res = await  getAllBrand()
+            console.log(res)
+          } catch (error) {
+            console.log(error)
+            setError(error)
+          }
+        })()
+      }
+    }, [])
 
     const brandSettings = {
         slidesToScroll: 1,

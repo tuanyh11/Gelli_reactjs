@@ -7,6 +7,7 @@ import {
   FaTimes,
   FaTwitter,
 } from "react-icons/fa";
+import { connect } from "react-redux";
 import { Link, NavLink, useLocation, useParams } from "react-router-dom";
 import { Container } from "reactstrap";
 import Dropdown from "../../UI/Dropdown";
@@ -15,55 +16,6 @@ import { useHeaderContext } from "./Context";
 import Logo from "./Logo";
 import SearchBox from "./SearchBox";
 
-const pages = [
-  {
-    id: Math.random().toString(36).substr(2, 9),
-    name: "home",
-    path: "home",
-  },
-  {
-    id: Math.random().toString(36).substr(2, 9),
-    name: "categories",
-    path: "shop",
-    items: [
-      {
-        id: Math.random().toString(36).substr(2, 9),
-        name: "perfume",
-      },
-      {
-        id: Math.random().toString(36).substr(2, 9),
-        name: "rollerballs & travel size",
-      },
-      {
-        id: Math.random().toString(36).substr(2, 9),
-        name: "lotions & oils",
-      },
-      {
-        id: Math.random().toString(36).substr(2, 9),
-        name: "body mist & hair mist",
-      },
-      {
-        id: Math.random().toString(36).substr(2, 9),
-        name: "bath & shower",
-      },
-    ],
-  },
-  {
-    id: Math.random().toString(36).substr(2, 9),
-    name: "our blog",
-    path: "blog",
-  },
-  {
-    id: Math.random().toString(36).substr(2, 9),
-    name: "faq",
-    path: "faq",
-  },
-  {
-    id: Math.random().toString(36).substr(2, 9),
-    name: "contact us",
-    path: "contactus",
-  },
-];
 
 const social = [
   {
@@ -132,7 +84,7 @@ const renderBody = (items, handleOnClick) => {
 
 
 
-const Nav = () => {
+const Nav = ({listMenu, listCategories, listSocial}) => {
   const [category, setCategory] = useState("Categories")
   const [isOffLayer, setIsOffLayer] = useState(false)
   const [activeNav, setActiveNav] = useHeaderContext()
@@ -187,6 +139,7 @@ const Nav = () => {
     }
   }, [timeRef.current])
 
+
   return (
     <>
     {/* pc lg */}
@@ -195,16 +148,16 @@ const Nav = () => {
           <div className="flex items-center justify-between md:flex-col md:py-2 lg:flex-row leading-[78px]">
             {/* nav */}
             <ul className="flex relative">
-              {pages.map((item) => {
-                if (item.items) {
+              {listMenu.map((page, i) => {
+                if (page.name === 'categories') {
                   return (
                     <li
                       className="uppercase px-[14px] text-13 font-bold  "
-                      key={item.id}
+                      key={i}
                     >
                       <Dropdown
-                        value={item.name}
-                        renderBody={() => renderBody(item.items, handleOnClick)}
+                        value={page.name}
+                        renderBody={() => renderBody(listCategories, handleOnClick)}
                       />
                     </li>
                   );
@@ -212,9 +165,9 @@ const Nav = () => {
                 return (
                   <li
                     className="uppercase px-[14px] text-13 font-bold "
-                    key={item.id}
+                    key={i}
                   >
-                    <NavLink to={`/${item.path}`}>{item.name}</NavLink>
+                    <NavLink to={page.url}>{page.name}</NavLink>
                   </li>
                 );
               })}
@@ -222,9 +175,9 @@ const Nav = () => {
 
             {/* social  */}
             <ul className="flex items-center  lg:!pt-0">
-              {social.map((item) => (
-                <li key={item.id} className="px-[14px]">
-                  <a href={item.url}>{item.icon}</a>
+              {listSocial.map((item, i) => (
+                <li key={i} className="px-[14px]">
+                  <a href={item.url} dangerouslySetInnerHTML={{__html: item.icon}}/>
                 </li>
               ))}
             </ul>
@@ -249,12 +202,12 @@ const Nav = () => {
               </div>
 
               <ul className="pt-10 !px-5">
-                {pages.map((page) => {
+                {listMenu.map((page, i) => {
                   if (page.items) {
                     return (
                       <li
                         className="relative  text-2xl font-semibold my-4"
-                        key={page.id}
+                        key={i}
                       >
                           <Dropdown
                             value={page.name}
@@ -268,13 +221,13 @@ const Nav = () => {
                     );
                   }
                   return (
-                    <li key={page.id}>
+                    <li key={i}>
                       <NavLink
                         onClick={() => setIsOffLayer(!isOffLayer)}
-                        to={`/${page.path}`}
+                        to={`/${page.url}`}
                         className={({ isActive }) =>
                           `${
-                            isActive || page.path === location.state?.path
+                            isActive || page.url === location.state?.path
                               ? "!text-primary"
                               : ""
                           }  text-2xl font-semibold my-4 py-1 block`
@@ -309,4 +262,13 @@ const Nav = () => {
   );
 };
 
-export default Nav;
+const mapStateToProps = (state) => {
+  
+ return ({
+    listMenu: state.ui.data.setting?.list_menu ? JSON.parse(`[${state.ui.data.setting.list_menu}]`) : [],
+    listSocial: state.ui.data.setting?.list_social ? JSON.parse(`[${state.ui.data.setting.list_social}]`) : [],
+    listCategories: state.ui.data?.categories ? state.ui.data?.categories : []
+  })
+} 
+
+export default connect(mapStateToProps)(Nav);

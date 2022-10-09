@@ -1,5 +1,6 @@
 import React from 'react';
 import { FaHeart, FaSearch, FaShoppingCart } from 'react-icons/fa';
+import { URL } from '../../../api';
 import DiamondButton from '../../Common/Button/DiamondButton';
 import './style.css'
 
@@ -44,8 +45,8 @@ const DefaultCard = ({
         <div className="flex flex-col">
           <div className="flex justify-center">
             <img
-              className="object-contain  w-[90px] h-[160px]"
-              src={data.image}
+              className="object-contain  w-full h-[160px]"
+              src={`${URL}/${data.media?.url}`}
               alt=""
             />
           </div>

@@ -7,7 +7,7 @@ import member_1 from "../Fakedata/images/ourteam-1.png";
 import daily_title_image_1 from "../Fakedata/images/VectorSmartObject13.png";
 import Slider from "react-slick";
 import user_image from "../Fakedata/images/Layer35.png";
-import { FaAngleLeft, FaAngleRight, FaFacebookF, FaGlobe, FaGoogle, FaTwitter } from "react-icons/fa";
+import {  FaFacebookF, FaGlobe, FaGoogle, FaTwitter } from "react-icons/fa";
 
 const testimonialSettings = {
   dots: true,

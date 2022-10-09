@@ -58,6 +58,12 @@
   .footer_logo-text span {
     @apply ml-8 lg:ml-0
   }
+
+  /* slider */
+
+  .slider-title span{
+    @apply text-[200px]  normal-case font-alex-brush font-medium absolute top-7 left-0 lg:translate-x-6 text-gray-darkest md:text-[200px] md:left-0 md:translate-x-1/2
+  }
 }
 
 

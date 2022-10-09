@@ -1,9 +1,10 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { FaAngleDown, FaBars, FaBuromobelexperte, FaShoppingCart, FaStar } from 'react-icons/fa'
 import { Col, Row } from 'reactstrap'
-import { CardProductAct, CardProductList, DefaultProCard, DiamondButton } from '../Components'
-import Dropdown from '../Components/UI/Dropdown'
-import { products } from '../Fakedata/products'
+import { CardProductAct, CardProductList, DefaultProCard, DiamondButton } from '../../Components'
+import Dropdown from '../../Components/UI/Dropdown'
+import { products } from '../../Fakedata/products'
+import { useProductSlice } from '../../Redux/hooks'
 
 const sortType = [
   {
@@ -119,7 +120,7 @@ const Shop = () => {
   const [action, setActions] =useState({
     sort: sortType[0].name,
     show: showOptions[0],
-    viewAs: null
+    viewAs: 1
   })
 
   const handleSetActions = (type, value) => {
@@ -149,6 +150,11 @@ const Shop = () => {
     setCurrentPage(Number(page) + 1) 
   }
 
+  const [listProduct, {getProduct}, dispatch] = useProductSlice()
+
+  useEffect(() => {
+    dispatch(getProduct())
+  }, []) 
 
   return (
     <div className='relative'>
@@ -198,7 +204,7 @@ const Shop = () => {
 
        <div className="mt-[50px] font-medium">
         <Row className=''>
-          {products.map((product, index) => 
+          {listProduct?.products.map((product, index) => 
             action.viewAs === 1 ?
             <Col
               key={index}
