@@ -1,7 +1,8 @@
 
 import { BlogSideBar, LayoutWithSideBar, ProductSideBar } from "../Components"
 import {ShopSideBar} from "../Components/"
-import { Home, Cart, Shop, BlogDetail ,ProductDetail, Checkout, AboutUs, Contactus } from "../Pages"
+import EmptyLayout from "../Components/Layout/EmptyLayout";
+import { Home, Cart, Shop, BlogDetail ,ProductDetail, Checkout, AboutUs, Contactus, Auth } from "../Pages"
 import Blog from "../Pages/Blog";
 
 
@@ -89,5 +90,15 @@ export const routes = [
         layoutProps: {
             offPolicyAndBrand: true
         }
+    }, 
+    {
+        path: "/login", 
+        element: Auth,
+        layout: EmptyLayout
+    },
+    {
+        path: "/register", 
+        element: Auth,
+        layout: EmptyLayout
     }
 ]
