@@ -62,11 +62,11 @@ const SearchBox = ({responsive, categories}) => {
         <Dropdown
           renderBody={() => renderBody(categories, handleOnClick)}
           value={category}
-          style={{ text: "w-[100px] limit !text-primary" }}
+          style={{ text: "w-[80px] limit !text-primary" }}
           
         />
       </div>
-      <div className="w-[2px] h-[13px] block bg-b-1 ml-2 "></div>
+      <div className="w-[1px] h-[12px] block bg-b-1 ml-2 bg-slate-300 "></div>
 
       <div className="">
         <div className="flex items-center flex-1">

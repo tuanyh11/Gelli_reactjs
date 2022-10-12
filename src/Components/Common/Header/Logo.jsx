@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
 const Logo = ({logo}) => {
-  console.log(logo);
   return (
     <Link to={logo?.url} className="flex items-center">
       <div className="">

@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { FaEllipsisH, FaEllipsisV, FaFilter, FaTimes } from "react-icons/fa";
 import { useLocation } from "react-router-dom";
-import { Col, Container, Row } from "reactstrap";
+import {  Col, Container, Row } from "reactstrap";
+import Breadcrumb from "../Common/Breadcrumb";
 import DiamondButton from "../Common/Button/DiamondButton";
 import Footer from "../Common/Footer";
 import Header from "../Common/Header";
@@ -55,6 +56,7 @@ const LayoutWithSideBar = ({
 
 
       <Header />
+      <Breadcrumb/>
       <div className="mt-[70px]">
         {/* side bar */}
         <Container>

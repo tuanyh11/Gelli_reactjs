@@ -7,7 +7,7 @@ const Dropdown = ({
   value,
   activeHead,
   onClick,
-  style = { header: "", text: "" },
+  style = { header: "", text: "", container: "" },
 }) => {
   const toggleRef = useRef(null);
   const contentRef = useRef(null);
@@ -32,7 +32,7 @@ const Dropdown = ({
   }, [toggleRef, contentRef]);
 
   return (
-    <div ref={toggleRef} className="dropdownCustom">
+    <div ref={toggleRef} className={`dropdownCustom ${style.container}`}>
       {renderHeader ? (
         renderHeader()
       ) : (

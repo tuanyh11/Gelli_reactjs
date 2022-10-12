@@ -1,6 +1,9 @@
 import React from 'react';
 import { FaHeart, FaSearch, FaShoppingCart } from 'react-icons/fa';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { URL } from '../../../api';
+import { addProductToCart } from '../../../Redux/Slice/cartSlice';
 import DiamondButton from '../../Common/Button/DiamondButton';
 import './style.css'
 
@@ -8,6 +11,7 @@ import './style.css'
 const DefaultCard = ({ 
   data, 
   adapteHeightTop = true, 
+  addProductToCart,
   adapteHeightBottom = true, 
   valueAdapteHeightTop = 30, 
   valueAdapteHeightBottom = 80
@@ -42,7 +46,7 @@ const DefaultCard = ({
             </DiamondButton> 
           </div>
         </div>
-        <div className="flex flex-col">
+        <Link to={`product/${data.id}`} className="flex flex-col">
           <div className="flex justify-center">
             <img
               className="object-contain  w-full h-[160px]"
@@ -56,13 +60,14 @@ const DefaultCard = ({
               {data.price}
             </h1>
           </div>
-        </div>
+        </Link>
 
         <div className="realtive z-[999999999999999] ">
           <div className="absolute z-[999999999999999] bottom-0 !w-[50px] !h-[50px] translate-y-1/2 left-1/2 -translate-x-1/2 default-transition defaultcard-product-addcart">
             <DiamondButton
               containerButton="group h-full bg-white !border-primary w-full border "
               button="!border-primary !bg-primary origin-center "
+              onClick={() => addProductToCart(data)}
             >
               {<FaShoppingCart className="!text-white" />}
             </DiamondButton>
@@ -74,4 +79,11 @@ const DefaultCard = ({
   );
 };
 
-export default DefaultCard;
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+    addProductToCart: (product) => dispatch(addProductToCart(product)),
+    ...ownProps
+  }
+}
+
+export default connect(null, mapDispatchToProps)(DefaultCard);

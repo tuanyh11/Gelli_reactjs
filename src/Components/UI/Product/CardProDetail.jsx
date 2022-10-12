@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   FaAngleDown,
   FaAngleLeft,
@@ -10,6 +10,7 @@ import {
 } from "react-icons/fa";
 import Slider from "react-slick";
 import { Col, Row } from "reactstrap";
+import { URL } from "../../../api";
 import ArrowButton from "../../Common/Button/ArrowButton";
 import DiamondButton from "../../Common/Button/DiamondButton";
 import Arrow from "../Arrow";
@@ -93,29 +94,32 @@ const settings = {
 };
 
 const CardProDetail = ({product}) => {
-  const [imageProduct, setImageProduct] = useState(product.gallecy[0].url);
-  const [selectSize, setSelectSize] = useState(product?.size[0]?.value);
-
+  const [imageProduct, setImageProduct] = useState('');
+  useEffect(() => {
+    setImageProduct(product?.media?.url)
+  }, [product])
+  // const [selectSize, setSelectSize] = useState(product?.size[0]?.value);
+  
   return (
     <div>
       <Row>
         <Col md={12} lg={6}>
-          <div className="p-2 border-2">
+          <div className="px-2 border-2 py-[70px]">
             <img
-              src={imageProduct}
+              src={`${URL}/${imageProduct}`}
               alt=""
-              className=" w-full h-full lg:w-[410px] lg:h-[370px] "
+              className=" w-full h-full ml-auto mr-auto object-cover  lg:w-[360px] lg:h-[240px] "
             />
           </div>
           <Slider {...settings} className="mt-[30px] pl-[21px] pr-6">
-            {product.gallecy.map((item, i) => (
+            {product?.gallery.map((item, i) => (
               <div
                 key={i}
                 onClick={() => setImageProduct(item.url)}
                 className="cursor-pointer "
               >
                 <img
-                  src={item.url}
+                  src={`${URL}/${item.url}`}
                   alt=""
                   className="w-[110px] h-[100px] ml-auto mr-auto p-2 border"
                 />
@@ -123,10 +127,10 @@ const CardProDetail = ({product}) => {
             ))}
           </Slider>
         </Col>
-        <Col lg={6}>
-          <div>
+        <Col lg={6} >
+          <div className="h-full flex flex-col">
             <h1 className="text-base font-semibold mb-2 capitalize ">
-              {product.name}
+              {product?.name}
             </h1>
 
             {/* review  */}
@@ -154,13 +158,11 @@ const CardProDetail = ({product}) => {
             </div>
 
             <div className="text-3xl !text-primary font-medium mb-6">
-              {product.price}
+              {product?.price}
             </div>
             {/* descriptiom */}
             <div className="!mb-6">
-              <p className="text-xs normal-case leading-5 text-gray-5 font-normal ">
-                {product.description}
-              </p>
+              <p className="text-xs normal-case leading-5 text-gray-5 font-normal " dangerouslySetInnerHTML={{__html: product?.description}}/>
             </div>
 
             <div className="py-7 border-t-1 border-c-1">
@@ -178,7 +180,7 @@ const CardProDetail = ({product}) => {
                 </div>
               </div>
 
-              <div className="flex items-center">
+              {/* <div className="flex items-center">
                 <h1 className="uppercase text-13">size</h1>
                 <div className="ml-[45px] w-[150px] px-2 rounded-xl py-[10px] border relative  ">
                   <Dropdown
@@ -192,48 +194,50 @@ const CardProDetail = ({product}) => {
                     }
                   />
                 </div>
+              </div> */}
+            </div>
+
+            <div className="flex-1 flex flex-col justify-end pb-2">
+              {/* pc  */}
+              <div className="hidden lg:flex items-center justify-between ">
+                <ArrowButton />
+                <div className="left-auto">
+                  <CardProductAct />
+                </div>
+              </div>
+              {/* end pc */}
+              {/* tablet mobile */}
+
+              <Row className="flex lg:hidden items-center justify-between ">
+                <Col lg={12} className="left-auto">
+                  <CardProductAct boxButtonStyle={"flex items-center justify-start"}/>
+                </Col>
+                <Col lg={12}>
+                  <ArrowButton textStyle={"w-full"} />
+                </Col >
+              </Row>
+              {/* end tablet mobile */}
+
+
+              <div className="flex items-center lg:mt-4 mt-8">
+                <h1 className="uppercase text-13">share via</h1>
+                <ul className="flex items-center ml-4">
+                  <li className="">
+                    <FaFacebookF className="w-3 h-3 mr-2 cursor-pointer hover:!text-primary text-gray-3" />
+                  </li>
+                  <li className="">
+                    <FaGoogle className="w-3 h-3 mr-2 cursor-pointer hover:!text-primary text-gray-3" />
+                  </li>
+                  <li className="">
+                    <FaTwitter className="w-3 h-3 mr-2 cursor-pointer hover:!text-primary text-gray-3" />
+                  </li>
+                  <li className="">
+                    <FaTwitter className="w-3 h-3 mr-2 cursor-pointer hover:!text-primary text-gray-3" />
+                  </li>
+                </ul>
               </div>
             </div>
 
-          {/* pc  */}
-            <div className="hidden lg:flex items-center justify-between ">
-              <ArrowButton />
-              <div className="left-auto">
-                <CardProductAct />
-              </div>
-            </div>
-            {/* end pc */}
-
-            {/* tablet mobile */}
-
-            <Row className="flex lg:hidden items-center justify-between ">
-              <Col lg={12} className="left-auto">
-                <CardProductAct boxButtonStyle={"flex items-center justify-start"}/>
-              </Col>
-              <Col lg={12}>
-                <ArrowButton textStyle={"w-full"} />
-              </Col >
-            </Row>
-            {/* end tablet mobile */}
-
-
-            <div className="flex items-center lg:mt-4 mt-8">
-              <h1 className="uppercase text-13">share via</h1>
-              <ul className="flex items-center ml-4">
-                <li className="">
-                  <FaFacebookF className="w-3 h-3 mr-2 cursor-pointer hover:!text-primary text-gray-3" />
-                </li>
-                <li className="">
-                  <FaGoogle className="w-3 h-3 mr-2 cursor-pointer hover:!text-primary text-gray-3" />
-                </li>
-                <li className="">
-                  <FaTwitter className="w-3 h-3 mr-2 cursor-pointer hover:!text-primary text-gray-3" />
-                </li>
-                <li className="">
-                  <FaTwitter className="w-3 h-3 mr-2 cursor-pointer hover:!text-primary text-gray-3" />
-                </li>
-              </ul>
-            </div>
           </div>
         </Col>
       </Row>

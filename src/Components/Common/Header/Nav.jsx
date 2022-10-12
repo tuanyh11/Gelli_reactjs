@@ -143,31 +143,32 @@ const Nav = ({listMenu, listCategories, listSocial}) => {
   return (
     <>
     {/* pc lg */}
-      <div className="border-b hidden  lg:block border-c-1 ">
+      <div className="border-b-2 hidden  lg:block border-c-1 ">
         <Container>
-          <div className="flex items-center justify-between md:flex-col md:py-2 lg:flex-row leading-[78px]">
+          <div className="flex items-center justify-between md:flex-col  lg:flex-row ">
             {/* nav */}
             <ul className="flex relative">
               {listMenu.map((page, i) => {
                 if (page.name === 'categories') {
                   return (
                     <li
-                      className="uppercase px-[14px] text-13 font-bold  "
+                      className="uppercase px-[14px] text-13 font-bold relative  after:w-0 hover:after:!w-5 after:default-transition after:content-['']  after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:h-[3px] after:!bg-primary"
                       key={i}
                     >
                       <Dropdown
                         value={page.name}
                         renderBody={() => renderBody(listCategories, handleOnClick)}
+                        style={{container: 'hover:!text-primary', text: 'leading-[60px]'}}
                       />
                     </li>
                   );
                 }
                 return (
                   <li
-                    className="uppercase px-[14px] text-13 font-bold "
+                    className="uppercase px-[14px]  text-13 font-bold relative  after:w-0 hover:after:w-5 after:default-transition  after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2  after:h-[3px] after:!bg-primary "
                     key={i}
                   >
-                    <NavLink to={page.url}>{page.name}</NavLink>
+                    <NavLink to={page.url} className="leading-[60px]">{page.name}</NavLink>
                   </li>
                 );
               })}

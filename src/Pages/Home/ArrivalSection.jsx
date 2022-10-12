@@ -5,7 +5,6 @@ import Slider from 'react-slick'
 import { Container } from 'reactstrap'
 import { Arrow, DefaultProCard, Title } from '../../Components'
 import home_title_image_1 from '../../Fakedata/images/home-title-img-1.png'
-import { products } from '../../Fakedata/products'
 
 const productsArrival = {
     dots: false,
@@ -47,7 +46,7 @@ const arrival = {
     image: home_title_image_1
 }
 
-const ArrivalSection = () => {
+const ArrivalSection = ({products}) => {
   return (
     
     <div className="mt-[100px]">
@@ -57,10 +56,10 @@ const ArrivalSection = () => {
         </div>
         <div>
         <Slider {...productsArrival} adaptiveHeight="true" className='-mx-1.5' >
-            {products.map((product, i) => (
-            <Link to={`product/${i}`} key={i} className="md:px-15">
+            {products.map((product) => (
+            <div key={product.id} className="md:px-15">
                 <DefaultProCard  data={product} />
-            </Link>
+            </div>
             )) }
         </Slider>
         </div>

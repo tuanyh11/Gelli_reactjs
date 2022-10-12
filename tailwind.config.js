@@ -52,7 +52,7 @@ module.exports = {
         'dragon': 'Dragon is Coming, sans-serif',
         'alex-brush': 'Alex Brush, cursive',
         'greatVibes': 'Great Vibes, cursive',
-        'dry-brush': "Simple Dry Brush, sans-seri",
+        'dry-brush': "Dry Brush, sans-seri",
         'lato': 'Lato, sans-serif'
       },
       borderWidth:{

@@ -62,7 +62,7 @@
   /* slider */
 
   .slider-title span{
-    @apply text-[200px]  normal-case font-alex-brush font-medium absolute top-7 left-0 lg:translate-x-6 text-gray-darkest md:text-[200px] md:left-0 md:translate-x-1/2
+    @apply text-[200px] normal-case font-alex-brush font-medium absolute top-12 left-0 lg:translate-x-6 text-gray-darkest md:text-[200px] md:left-0 md:translate-x-1/2
   }
 }
 
@@ -76,6 +76,17 @@
 
 .g-15, .gx-15 {
   --bs-gutter-x: 1.875rem;
+}
+
+
+@font-face {
+  font-family: 'Dragon is Coming';
+  src: url('./static/font/Dragon\ is\ coming.otf');
+}
+
+@font-face {
+  font-family: 'Dry Brush';
+  src: url('./static/font/Dry\ Brush.ttf');
 }
 
 

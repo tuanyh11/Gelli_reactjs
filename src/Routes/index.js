@@ -9,12 +9,19 @@ export const routes = [
     {
         path: "/",
         element: Home,
-        layout: null
+        layout: null,
+        layoutProps: {
+            offBreadcrumb: true,
+        }
     },
     {
         path: "/cart",
         element: Cart,
-        layout: null
+        layout: null,
+        layoutProps: {
+            SideBarElement: BlogSideBar,
+            offPolicyAndBrand: true
+        }
     },
     {
         path: "/shop",
@@ -42,7 +49,7 @@ export const routes = [
         }
     },
     {
-        path: "/blog",
+        path: "/ourblog",
         element: Blog,
         layout: LayoutWithSideBar,
         layoutProps: {

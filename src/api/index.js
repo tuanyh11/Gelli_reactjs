@@ -22,3 +22,8 @@ export const getListCategories = () => {
 export const getAllBrand =  () => {
     return Api.get('/brand')
 }
+
+
+export const getProduct = (id) => {
+    return Api.get(`/products/${id}`)
+}

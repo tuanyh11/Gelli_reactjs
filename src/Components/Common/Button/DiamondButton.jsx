@@ -7,9 +7,10 @@ const DiamondButton = ({
   button = '', 
   content = '',
   children,
+  onClick = () => {}
 }) => {
   return (
-    <div className={`container-button !p-[2px] hover:border-primary group rounded-sm ${containerButton}`} >
+    <div onClick={onClick} className={`container-button !p-[2px] hover:border-primary group rounded-sm ${containerButton}`} >
       <div className={`button rounded-sm ${button}`}>
           {children && <div className={`content ${content}`}>{children}</div>}
       </div>

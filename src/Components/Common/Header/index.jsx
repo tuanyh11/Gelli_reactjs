@@ -17,14 +17,13 @@ const Header = () => {
 
   const[uiData, {getCategories}, dispatch] = useUiSlice()
 
-  console.log(uiData)
-
   useEffect(() =>  {
     dispatch(getCategories())
     dispatch(getUi())
   },[])
 
   const categories = uiData.data?.categories 
+
 
   return (
     <div>

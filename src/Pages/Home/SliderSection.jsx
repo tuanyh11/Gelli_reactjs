@@ -36,7 +36,6 @@ const SliderSection = ({slider}) => {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state)
   return ({
     slider: state.ui.data.slider ? state.ui.data.slider : []
   })

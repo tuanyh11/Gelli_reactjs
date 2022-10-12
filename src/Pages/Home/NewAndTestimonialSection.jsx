@@ -88,7 +88,7 @@ const NewAndTestimonialSection = () => {
                   <h1 className="text-6xl md:text-[120px] uppercase font-bold text-white relative z-10">
                     {coupleCollectionBanner.heading}
                   </h1>
-                  <h1 className="font-dry-brush hidden md:block  capitalize  !text-primary -mt-16 tracking-widest ml-[150px] text-[100px] relative z-10">
+                  <h1 className="font-dry-brush hidden md:block  capitalize  !text-primary -mt-16 tracking-widest ml-[150px] text-[120px] relative z-10">
                     {coupleCollectionBanner.tileContent}
                   </h1>
                   <h1 className="font-dry-brush block md:hidden absolute right-0 bottom-0 translate-x-1/2 translate-y-1/2 lg:hidden text-4xl capitalize  !text-primary -mt-16 tracking-widest ml-[150px] md:text-[100px]  z-10">
@@ -144,10 +144,10 @@ const NewAndTestimonialSection = () => {
                   />
                 </div>
                 <div className="text-center h-full flex flex-col justify-center relative">
-                  <h1 className="text-6xl md:text-[120px] uppercase font-bold text-white relative z-10">
+                  <h1 className="text-6xl md:text-[120px] uppercase font-bold text-white relative z-10 tracking-widest ">
                     {coupleCollectionBanner.heading}
                   </h1>
-                  <h1 className="font-dry-brush hidden md:block  capitalize  !text-primary -mt-16 tracking-widest ml-[150px] text-[100px] relative z-10">
+                  <h1 className="font-dry-brush hidden md:block  capitalize  !text-primary -mt-8 tracking-widest translate absolute [transform:translate(-130px,50px)] left-1/2 text-[100px] top-1/2 z-10">
                     {coupleCollectionBanner.tileContent}
                   </h1>
                   <h1 className="font-dry-brush block md:hidden absolute right-0 bottom-0 translate-x-1/2 translate-y-1/2 lg:hidden text-4xl capitalize  !text-primary -mt-16 tracking-widest ml-[150px] md:text-[100px]  z-10">

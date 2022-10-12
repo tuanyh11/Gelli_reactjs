@@ -22,8 +22,8 @@ const Home = () => {
       <SliderSection />
       <div className="mt-12">
         <BannerSection />
-        <ArrivalSection />
-        <BestSellingSection />
+        <ArrivalSection products={product.products} />
+        <BestSellingSection products={product.products} />
         <DailyDealSection />
         <NewAndTestimonialSection />
       </div>

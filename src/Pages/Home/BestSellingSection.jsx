@@ -5,7 +5,6 @@ import home_title_image_1 from '../../Fakedata/images/home-title-img-1.png'
 import Slider from 'react-slick'
 import { Arrow, DefaultProCard, DiamondButton, Title } from '../../Components'
 import { FaAngleLeft, FaAngleRight } from 'react-icons/fa'
-import { products } from '../../Fakedata/products'
 
 const collection = {
     tile: 'new collection ',
@@ -73,9 +72,11 @@ const bestSellingProducts = {
       )
     }
   }
+
+  
   
 
-const BestSellingSection = () => {
+const BestSellingSection = ({products}) => {
   return (
     <section className='!mt-5'>
     <Row>
@@ -84,9 +85,9 @@ const BestSellingSection = () => {
             <div className=" absolute top-1/2 lg:left-[100px] -translate-y-1/2 md:left-0  " >
              <div className="relative hidden lg:flex justify-center flex-col md:text-center lg:text-start">
                 <h1 className="text-6xl md:text-[120px] uppercase font-bold ">special</h1>
-                <div className="ml-0  lg:m-0  relative  lg:px-[140px] ">
+                <div className="ml-0  lg:m-0  relative  lg:px-[160px] ">
                   <div >
-                    <h2 className=" font-dry-brush text-4xl mb-4 capitalize  !text-primary leading-[1.6] -mt-16 tracking-widest md:static md:translate-x-0 md:text-[90px] md:translate-y-0 md:-mt-10 md:mb-3 md:leading-1">Collections</h2>
+                    <h2 className=" font-dry-brush text-[120px] mb-4 capitalize  !text-primary leading-[1.6] -mt-16 tracking-widest md:static md:translate-x-0 md:text-[90px] md:translate-y-0 md:-mt-10 md:mb-3 md:leading-1">Collections</h2>
                   </div>
                   <p className='font-lato text-[15px] md:px-10'>{collection.description}</p>
                 </div>
