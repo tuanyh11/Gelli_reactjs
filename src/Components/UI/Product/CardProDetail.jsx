@@ -8,9 +8,11 @@ import {
   FaStar,
   FaTwitter,
 } from "react-icons/fa";
+import { connect } from "react-redux";
 import Slider from "react-slick";
 import { Col, Row } from "reactstrap";
 import { URL } from "../../../api";
+import { addProductToCart } from "../../../Redux/Slice/cartSlice";
 import ArrowButton from "../../Common/Button/ArrowButton";
 import DiamondButton from "../../Common/Button/DiamondButton";
 import Arrow from "../Arrow";
@@ -93,13 +95,44 @@ const settings = {
   ]
 };
 
-const CardProDetail = ({product}) => {
+const CardProDetail = ({product, addProductToCart}) => {
   const [imageProduct, setImageProduct] = useState('');
+
+  const [quantity, setQuantity] = useState();
+  
+  const maxiumQuantity = Number(product?.product_meta?.find((item) => item?.meta_field === 'quantity')?.meta_value)
+
   useEffect(() => {
     setImageProduct(product?.media?.url)
+    if(maxiumQuantity && maxiumQuantity > 0) {
+      setQuantity(1)
+    }
   }, [product])
   // const [selectSize, setSelectSize] = useState(product?.size[0]?.value);
   
+  const handleNumberQuantity = (e) => {
+    const curentQuantity = Number(e.target.value)
+    if(/^[0-9]*$/.test(e.target.value) && curentQuantity <= maxiumQuantity?.meta_value ) {
+      setQuantity(curentQuantity)
+    } else {
+      alert(' Quantity is more than maximum quantity of product!')
+    }
+  }
+
+  const handleIncrAndDecQuantity = (type) => {
+    if(type === 'incr') {
+        if(quantity < maxiumQuantity) {
+            setQuantity(pre => ++pre)
+        } else {
+            alert(' Quantity is more than maximum quantity of product!')
+        }
+    } else {
+        if(quantity > 1) {
+          setQuantity(pre => --pre)
+        }
+    }
+}
+
   return (
     <div>
       <Row>
@@ -169,14 +202,14 @@ const CardProDetail = ({product}) => {
               <div className="flex items-center mb-3">
                 <h1 className="uppercase text-13">qty</h1>
                 <div className="ml-[45px] flex items-center w-[150px] px-2 rounded-xl py-[10px] border justify-between">
-                  <button className="px-2 h-full">-</button>
+                  <button className="px-2 h-full" onClick={() => handleIncrAndDecQuantity('desc')}>-</button>
                   <input
-                    value="01"
-                    onChange={() => {}}
+                    value={quantity < 10 && quantity !== 0  ?  '0' + quantity : quantity }
+                    onChange={(e) => handleNumberQuantity(e)}
                     type="text"
                     className="text-center w-full outline-none text-base !text-primary"
                   />
-                  <button className="px-2 h-full ">+</button>
+                  <button className="px-2 h-full " onClick={() => handleIncrAndDecQuantity('incr')}>+</button>
                 </div>
               </div>
 
@@ -199,8 +232,8 @@ const CardProDetail = ({product}) => {
 
             <div className="flex-1 flex flex-col justify-end pb-2">
               {/* pc  */}
-              <div className="hidden lg:flex items-center justify-between ">
-                <ArrowButton />
+              <div className="hidden lg:flex items-center justify-between " >
+                <ArrowButton  onClick={() => addProductToCart({...product, quantity})} />
                 <div className="left-auto">
                   <CardProductAct />
                 </div>
@@ -209,7 +242,7 @@ const CardProDetail = ({product}) => {
               {/* tablet mobile */}
 
               <Row className="flex lg:hidden items-center justify-between ">
-                <Col lg={12} className="left-auto">
+                <Col lg={12} className="left-auto" onClick={() => addProductToCart({...product, quantity})}>
                   <CardProductAct boxButtonStyle={"flex items-center justify-start"}/>
                 </Col>
                 <Col lg={12}>
@@ -245,4 +278,11 @@ const CardProDetail = ({product}) => {
   );
 };
 
-export default CardProDetail;
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+    addProductToCart: (product) => dispatch(addProductToCart(product)),
+    ...ownProps
+  }
+}
+
+export default connect(mapDispatchToProps)(CardProDetail) ;
