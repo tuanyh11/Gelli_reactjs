@@ -1,23 +1,44 @@
 import { createSlice } from "@reduxjs/toolkit"
 
 const initialState = {
-    userInfo: {},
+    user: null,
     error: null,
+    token: null
 }
 
 const authSlice = createSlice({
     name: "authSlice",
     initialState,
     reducers:{
-        login() {
+        startLogin() {
 
         },
-        register() {
+        startRegister() {
 
+        },
+        startCompleteRegister() {
+
+        }
+        ,
+        loginSuccess(state, action){
+            state.user = action.payload.user
+            state.token = action.payload?.token
+        },
+
+        registerSuccess(state, action) {
+            state.user = action.payload.user
+        },
+
+        completeRegisterSuccess(state, action) {
+            state.user = action.payload.user
+        },
+
+        handleErrAuth(state, action) {
+            state.error = action?.payload?.response?.data?.message
         }
     }
 })
 
-export const {login, register} = authSlice.actions
+export const {startLogin, startRegister, startCompleteRegister,  handleErrAuth, loginSuccess, registerSuccess, completeRegisterSuccess} = authSlice.actions
 
 export default authSlice.reducer

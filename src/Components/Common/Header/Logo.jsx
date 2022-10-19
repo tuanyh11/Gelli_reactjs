@@ -10,7 +10,7 @@ const Logo = ({logo}) => {
             {logo?.title}
           </h1>
       </div>
-      <div className="ml-3 text-c-2 text-[13px] uppercase font-medium hidden lg:block" dangerouslySetInnerHTML={{__html: logo?.description}}/>
+      {/* <div className="ml-3 text-c-2 text-[13px] uppercase font-medium hidden lg:block" dangerouslySetInnerHTML={{__html: logo?.description}}/> */}
     </Link>
   );
 };

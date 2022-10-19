@@ -1,28 +1,39 @@
-import { call, takeLatest } from "redux-saga/effects"
-import { loginApi, registerApi } from "../../api"
-import { login, register } from "../Slice/authSlice"
+import { call, put, takeLatest } from "redux-saga/effects"
+import { completeRegisterApi, loginApi, registerApi } from "../../api"
+import {  completeRegisterSuccess, handleErrAuth, loginSuccess, registerSuccess, startCompleteRegister, startLogin, startRegister } from "../Slice/authSlice"
 
 const asyncLogin = function* (action) {
     try {
-        yield console.log(123)
 
-       const {res} = yield call(loginApi, action.payload)
+       const res = yield call(loginApi, action.payload)
+       yield put(loginSuccess(res.data))
     } catch (error) {
-        
+        yield put(handleErrAuth(error))
     }
 }
 
 const asyncRegister = function* (action) {
     try {
-        const {res} = yield call(registerApi, action.payload)
+        const res = yield call(registerApi, action.payload)
+        yield put(registerSuccess(res.data))
     } catch (error) {
-        console.log(error)
+        yield put(handleErrAuth(error))
+    }
+}
+
+const asyncCompleteRegister = function* (action) {
+    try {
+        const res = yield call(completeRegisterApi, action.payload)
+        yield put(completeRegisterSuccess(res.data))
+    } catch (error) {
+        yield put(handleErrAuth(error))
     }
 }
 
 function* authSaga() {
-    yield takeLatest(login.type, asyncLogin)
-    yield takeLatest(register.type, asyncRegister)
+    yield takeLatest(startLogin.type, asyncLogin)
+    yield takeLatest(startRegister.type, asyncRegister)
+    yield takeLatest(startCompleteRegister.type, asyncCompleteRegister)
 }
 
 export default authSaga

@@ -32,11 +32,13 @@ export const getProduct = (id) => {
 }
 
 export const loginApi = (data) => {
-    console.log(data)
     return Api.post(`/login`, {...data})
 }
 
 export const registerApi = (data) => {
-    console.log(data)
-    return Api.post(`/register`, {...data.payload})
+    return Api.post(`/register`, {...data})
+}
+
+export const completeRegisterApi = (data) => {
+    return Api.post(`/check-register-code`, {...data})
 }

@@ -1,7 +1,7 @@
-import {configureStore } from "@reduxjs/toolkit";
+import {combineReducers, configureStore } from "@reduxjs/toolkit";
 import createSagaMiddleware from "@redux-saga/core";
 import rootSaga from "../Saga";
-import {productSlice, cartSlice} from "../Slice/";
+import {productSlice, cartSlice, authSlice} from "../Slice/";
 import uiSlice from "../Slice/UiSlice";
 import storage from "redux-persist/lib/storage";
 import persistReducer from "redux-persist/es/persistReducer";
@@ -13,16 +13,23 @@ const persistConfig = {
     storage,
 }
 
-const persistedCartSlice = persistReducer(persistConfig, cartSlice)
+const rootReducer = combineReducers({
+    user: authSlice,
+    cart: cartSlice
+})
+
+const persistedCartSlice = persistReducer(persistConfig, rootReducer)
 
 const sagaMiddleware = createSagaMiddleware()
 const store =  configureStore({
     reducer: {
         product: productSlice,
         ui: uiSlice,
-        cart: persistedCartSlice
+        persistData: persistedCartSlice,
     },
-    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(sagaMiddleware) 
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware(
+        {serializableCheck: false}
+    ).concat(sagaMiddleware) 
 })
 
 sagaMiddleware.run(rootSaga)

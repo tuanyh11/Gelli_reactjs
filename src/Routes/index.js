@@ -2,7 +2,7 @@
 import { BlogSideBar, LayoutWithSideBar, ProductSideBar } from "../Components"
 import {ShopSideBar} from "../Components/"
 import EmptyLayout from "../Components/Layout/EmptyLayout";
-import { Home, Cart, Shop, BlogDetail ,ProductDetail, Checkout, AboutUs, Contactus, Auth } from "../Pages"
+import { Home, Cart, Shop, BlogDetail ,ProductDetail, Checkout, AboutUs, Contactus, Auth, CompleteAuth } from "../Pages"
 import Blog from "../Pages/Blog";
 
 
@@ -100,5 +100,11 @@ export const routes = [
         path: "/register", 
         element: Auth,
         layout: EmptyLayout
-    }
+    },
+    {
+        path: "/complete_register", 
+        element: CompleteAuth,
+        layout: EmptyLayout
+    },
+    
 ]

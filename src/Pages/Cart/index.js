@@ -185,7 +185,7 @@ const Cart = ({cartItems, handleSetQuantity, handleDelCartItem}) => {
 }
 
 const mapStateToProps = (state) => ({
-    cartItems: state.cart.cart
+    cartItems: state.persistData.cart
 })
 
 const mapDispatchToProps = (dispatch) => ({

@@ -45,7 +45,7 @@ const Main = ({cartLength}) => {
 };
 
 const mapStateToProps = (state) => ({
-  cartLength: state.cart.length
+  cartLength: state.persistData.cart.length
 })
 
 export default connect(mapStateToProps)(Main) ;

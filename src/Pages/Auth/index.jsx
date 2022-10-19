@@ -1,17 +1,21 @@
 
+import { text } from "@fortawesome/fontawesome-svg-core";
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import { Link, useLocation } from "react-router-dom";
-import { login, register } from "../../Redux/Slice/authSlice";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { login, register, startCompleteRegister, startLogin, startRegister } from "../../Redux/Slice/authSlice";
+import VerifyError from "./VeryfyError";
 
-const Auth = ({loginAct, registerAct}) => {
+const Auth = ({loginAct, registerAct, completeRegister, userIf}) => {
   const pathName = useLocation().pathname.split("/")[1].toLowerCase();
+
+  const nav = useNavigate()
 
   const [dataForm, setDataForm] = useState({
     name: "",
     email: "",
     password: "",
-    password_confirmation: "",
+    password_confirmation: "" 
   });
 
   const [error, setError] = useState({})
@@ -22,11 +26,16 @@ const Auth = ({loginAct, registerAct}) => {
 
   const isRegister = pathName === "register";
 
+  const isLogin = pathName === 'login'
+
   useEffect(() => {
     if(Object.values(error ? error: {}).length === 0 && isSubmit) {
-        if(isRegister) {
+        if(isRegister) 
           registerAct(dataForm)
-        }
+        
+        if(isLogin) 
+          loginAct(dataForm)
+        
     }
     setIsSubmit(false)  
   }, [isSubmit])
@@ -35,38 +44,33 @@ const Auth = ({loginAct, registerAct}) => {
    setError(null)
   }, [pathName])
 
+  useEffect(() => {
+    if(userIf.user && isRegister) nav('/login')
+
+    if(isLogin && userIf.user?.register_code) {
+      nav('/complete_register')
+    }
+    if(userIf.user?.email_verified_at && isLogin)
+      nav('/')
+  }, [userIf.user])
+
   const handleOnSubmit = (e) => {
     e.preventDefault()
-    if(!dataForm.email && !dataForm.name && !dataForm.password && !dataForm.password_confirmation  && isRegister) {
-        setError({...error, 
-            name: "name is required ",
-            email: "email is required",
-            password: "password is required",
-            password_confirmation: "password confirm is required",
-        })
+    if(isLogin) {
+      for (const key in {email: dataForm.email, password: dataForm.password}) {
+        VerifyError(key, setError, dataForm)
+      }
     }
 
-    if(!dataForm.email  && !dataForm.password) {
-        setError(pre => ({...pre, 
-            email: "email is required",
-            password: "password is required"
-        }))
-    }
-
-    if(!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/).test(dataForm.email)) {
-        setError( 
-            pre => ({
-            ...pre,
-            email: "incorrect email"
-        }))
-    }
-
-    if(dataForm.password !== dataForm.password_confirmation && isRegister) {
-        setError(pre => ({...pre, password_confirmation: "password and confirm password not match"}))
+    if(isRegister) {
+      for (const key in dataForm) {
+        VerifyError(key, setError, dataForm)
+      }
     }
 
     setIsSubmit(true)
   }
+
 
   const handleOnChange = (e) => {
     if(error?.[e.target.name]) {
@@ -77,6 +81,7 @@ const Auth = ({loginAct, registerAct}) => {
       [e.target.name]: e.target.value,
     })
   }
+  
 
 
   return (
@@ -159,25 +164,30 @@ const Auth = ({loginAct, registerAct}) => {
 
               <div className="flex items-center justify-between">
                 <div className="flex items-center !mt-5">
-                  <input type="checkbox" name="" id="" onChange={() => setShowPassword(pre => !pre)} />
+                  <input type="checkbox" name=""  onChange={() => setShowPassword(pre => !pre)} />
                   <span className="text-sm font-medium ml-3">
                     Show password
                   </span>
                 </div>
                 <div className="flex items-center !mt-5">
-                  <input type="checkbox" name="" id="" />
+                  <input type="checkbox" name=""  />
                   <span className="text-sm font-medium ml-3">Remember Me</span>
                 </div>
               </div>
             </div>
             <div className="">
-              <button className="block w-full text-white transition rounded-md mt-6 h-[55px] !bg-primary opacity-80 hover:opacity-100 capitalize">
-                {isRegister ? "register" : "login"}
-              </button>
+              
+                <button className="block w-full text-white transition rounded-md mt-6 h-[55px] !bg-primary opacity-80 hover:opacity-100 capitalize">
+                    {`${isRegister ? 'register' : 'login'}`}
+                </button>
             </div>
 
-            {!isRegister && (
+            {isLogin && (
               <div className="mt-6 text-base">Lost your password ?</div>
+            )}
+
+            {isRegister && (
+              <Link to="/complete_register" className=" block mt-6 text-base">Already register Complete rigister ?</Link>
             )}
           </form>
         </div>
@@ -188,9 +198,16 @@ const Auth = ({loginAct, registerAct}) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    loginAct: (data) => dispatch(login()),
-    registerAct: (data) => dispatch(register({payload: data})),
+    loginAct: (data) => dispatch(startLogin(data)),
+    registerAct: (data) => dispatch(startRegister(data)),
+    completeRegister: (data) => dispatch(startCompleteRegister(data))
   }
 }
 
-export default connect(null, mapDispatchToProps)(Auth);
+const mapStateToProps = (state) => {
+  return {
+    userIf: state.persistData.user
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Auth);
